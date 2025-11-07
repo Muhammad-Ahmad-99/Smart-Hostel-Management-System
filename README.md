@@ -1,10 +1,8 @@
-# Smart-Hostel-Management-System
-Central hub for Software Engineering project
 <h1 align="center">🏡 Smart Hostel Management System</h1>
 
 <p align="center">
   <strong>Department of Computer Science – Namal University, Mianwali</strong><br>
-  <em>Course: CSC-225 – Software Engineering</em><br>
+  <em>Course: Software Engineering</em><br>
   <em>Semester Project | Milestone 1</em>
 </p>
 
@@ -43,12 +41,11 @@ This project aims to build a **Smart Hostel Management System** that automates t
 
 <table>
 <tr><th>Role</th><th>Name</th><th>Roll No.</th><th>Email</th></tr>
-<tr><td>Group Lead</td><td>Muhammad Ahmad</td><td>BSCS-XX</td><td>ahmad@example.com</td></tr>
-<tr><td>Member</td><td>[Member 2 Name]</td><td>[Roll No]</td><td>[Email]</td></tr>
-<tr><td>Member</td><td>[Member 3 Name]</td><td>[Roll No]</td><td>[Email]</td></tr>
+<tr><td>Group Lead</td><td>Muhammad Ahmad</td><td>BSCS-2024-44</td><td>bscs24f44@namal.edu.pk</td></tr>
+<tr><td>Member</td><td>Asad Ullah Khan</td><td>BSCS-2024-17</td><td>bscs24f17@namal.edu.pk</td></tr>
+<tr><td>Member</td><td>Maryam Rashid</td><td>BSCS-2024-33</td><td>bscs24f33@namal.edu.pk</td></tr>
 </table>
 
----
 
 <h2>🤝 Requirement Provider (RP) Details</h2>
 
@@ -58,7 +55,6 @@ This project aims to build a **Smart Hostel Management System** that automates t
   <li><strong>Organization:</strong> Namal University, Mianwali</li>
 </ul>
 
----
 
 <h2>📅 Meetings & Documentation</h2>
 
@@ -74,7 +70,6 @@ This project aims to build a **Smart Hostel Management System** that automates t
   <li><a href="Meeting_Videos/Meeting2.mp4">Second Meeting (if conducted)</a></li>
 </ul>
 
----
 
 <h2>📄 Project Proposal Documents</h2>
 
@@ -84,7 +79,6 @@ This project aims to build a **Smart Hostel Management System** that automates t
   <li><a href="Project_Proposal/RP_Agreement.pdf">Requirement Provider Agreement</a></li>
 </ul>
 
----
 
 <h2>🛠️ Tools & Technologies (Planned)</h2>
 
