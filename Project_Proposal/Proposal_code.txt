@@ -8,17 +8,9 @@
 \setstretch{1.15}
 \usepackage{titlesec}
 \usepackage{graphicx}
-\usepackage{pgfgantt} % Added for Gantt chart
-\usepackage{xcolor} % Added for custom colors
+
 \titleformat{\section}{\normalfont\large\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
-
-% Define custom colors for Gantt chart
-\definecolor{sprint0}{RGB}{240,147,251}
-\definecolor{sprint1}{RGB}{79,172,254}
-\definecolor{sprint2}{RGB}{67,233,123}
-\definecolor{sprint3}{RGB}{250,112,154}
-\definecolor{sprint4}{RGB}{48,207,208}
 
 \begin{document}
 
@@ -30,25 +22,28 @@
     \vspace*{2cm}
     {\Large \textbf{Smart Hostel Management System}\\[0.5cm]
     \normalsize Project Proposal}\\[1cm]
+
     \includegraphics[width=7cm]{download.png}\\[1cm]
+
     {\large Department of Computer Science\\
     Namal University, Mianwali\\[1.5cm]}
-   
+    
     {\normalsize \textbf{Team Members}\\[0.3cm]
     \begin{tabular}{|@{}l|l@{}|}\hline
-    \quad Muhammad Ahmad & NUM-BSCS-2024-44 \quad \quad\\\hline
-    \quad Asad Ullah Khan & NUM-BSCS-2024-17 \quad \quad\\\hline
-    \quad Maryam Rashid & NUM-BSCS-2024-33 \quad \quad\\ \hline
+    \quad Muhammad Ahmad & NUM-BSCS-2024-44  \quad \quad\\\hline
+    \quad Asad Ullah Khan & NUM-BSCS-2024-17  \quad \quad\\\hline
+    \quad Maryam Rashid & NUM-BSCS-2024-33  \quad \quad\\ \hline
     \end{tabular}
     \\[1cm]
     \textbf{Requirement Provider (RP)}\\
-    Ms. Nida Sultan Nahra
-   
+    Ms. Nida Sultan Nahra 
+    
     (Hostel Warden, Namal University)\\[1cm]
     \textbf{Submission Date:} \today
     }
     \vfill
 \end{titlepage}
+
 \tableofcontents
 \newpage
 
@@ -57,6 +52,7 @@
 % --------------------------------
 \section{Requirement Provider Agreement}
 This agreement confirms the collaboration between the student team and the Requirement Provider (RP) for the Smart Hostel Management System project. The goal of this agreement is to formalize the RP's role in providing requirements, feedback, and acceptance testing during milestone reviews.
+
 \subsection*{Agreement Terms}
 \begin{itemize}
   \item The RP (Ms. Nida Sultan Nahra) agrees to act as the primary user and subject matter expert for the Smart Hostel Management System.
@@ -64,16 +60,20 @@ This agreement confirms the collaboration between the student team and the Requi
   \item The Team will produce the Milestone-1 deliverables (project proposal in LaTeX, meeting minutes template, and a recorded first meeting) and incorporate RP feedback in later milestones.
   \item The RP acknowledges that the current deliverable is a software model/proposal; later work may convert the model to a deployed online system.
 \end{itemize}
+
 \subsection*{Signatures}
 \vspace{0.5cm}
+
 \noindent
 \begin{tabular}{p{7cm} p{7cm}}
-Team Representative: & Requirement Provider: \\[0.5cm]
+Team Representative:  & Requirement Provider: \\[0.5cm] 
 Name: Muhammad Ahmad & Name: Ms. Nida Sultan Nahra \\[1cm]
-Sign: \quad \includegraphics[width=3cm]{ahmad_sign.png}
+Sign: \quad \includegraphics[width=3cm]{ahmad_sign.png} 
 & Sign: \quad \includegraphics[width=4cm]{mam_sign.png} \\[.20cm]
 Date: \today & Date: \today \\[0.5cm]
 \end{tabular}
+
+
 \newpage
 
 % --------------------------------
@@ -81,22 +81,24 @@ Date: \today & Date: \today \\[0.5cm]
 % --------------------------------
 \section{Introduction}
 Hostels are an integral part of Namal University’s campus life. Both male and female students live within a single shared hostel boundary, but each hostel area is separated by secure boundaries. The hostels share a common cafeteria and study/event area, where students can interact and study together before returning to their respective hostels at night.
+
 Currently, many hostel-related activities—such as attendance, visitor permissions, room allocation, and mess complaints—are handled manually. Female residents, for example, mark their attendance on a biometric machine by 10:00 pm, and wardens have to verify attendance reports manually. There is no automated system to track absentees or to easily confirm leaves, which can lead to errors or unintentional absences being overlooked.
+
 Manual gate-pass slips, unclear room allotments, and non-digital records increase administrative workload and confusion. These challenges inspired this project, \textbf{Smart Hostel Management System (SHMS)}, a web-based software model proposed under the guidance of Ms. Nida Sultan Nahra (Hostel Warden and English Lecturer). The project aims to digitize attendance, room management, gate-pass permissions, and mess tracking in a single portal accessible to wardens, students, and hostel staff.
 
 % --------------------------------
 % PROBLEM STATEMENT
 % --------------------------------
 \section{Problem Statement}
-The existing hostel management process at Namal University is largely manual, leading to inefficiencies and delays. Key issues include:
-\begin{itemize}
-  \item Manual attendance tracking for girls via biometric machines, and no automated system for boys, causing time-consuming verification and errors.
-  \item Hostel exit procedures rely on written permission slips, which may be unavailable outside office hours, making emergency exits difficult.
-  \item Day scholars and visitors are not tracked digitally, creating confusion for hostel security.
-  \item Room allocation conflicts arise due to varying capacities and incomplete clearance when students leave.
-  \item Mess payments and emergency meal requests lack flexibility and are difficult to manage manually.
-  \item Female students’ movement restrictions after 10:00 pm are enforced manually, creating potential safety and monitoring gaps.
-\end{itemize}
+The existing hostel management process at Namal University is largely manual, leading to inefficiencies and delays. Key issues include:  
+
+Manual attendance tracking for girls via biometric machines, and no automated system for boys, causing time-consuming verification and errors.  
+Hostel exit procedures rely on written permission slips, which may be unavailable outside office hours, making emergency exits difficult.  
+Day scholars and visitors are not tracked digitally, creating confusion for hostel security.  
+Room allocation conflicts arise due to varying capacities and incomplete clearance when students leave.  
+Mess payments and emergency meal requests lack flexibility and are difficult to manage manually.  
+Female students’ movement restrictions after 10:00 pm are enforced manually, creating potential safety and monitoring gaps.  
+
 These issues highlight the need for a centralized, automated system that tracks attendance, exits, room occupancy, and mess usage in real time, ensuring security, efficiency, and transparency for both students and hostel staff.
 
 % --------------------------------
@@ -118,7 +120,7 @@ The Smart Hostel Management System aims to:
 % --------------------------------
 \section{Stakeholder Identification}
 \begin{itemize}
-  \item \textbf{Requirement Provider (RP):} Ms. Nida Sultan Nahra, Hostel Warden and Lecturer who identified real-world issues.
+  \item \textbf{Requirement Provider (RP):} Ms. Nida Sultan Nahra Hostel Warden and Lecturer who identified real-world issues.
   \item \textbf{Hostel Warden and Assistants:} End-users for attendance verification, approvals, and room assignments.
   \item \textbf{Students (Residents):} Main users who will request gate-passes, report maintenance issues, and mark attendance.
   \item \textbf{Mess Committee / Staff:} Users who will post menus, handle payments, and record complaints.
@@ -130,6 +132,7 @@ The Smart Hostel Management System aims to:
 % --------------------------------
 \section{Software Development Methodology}
 An \textbf{Agile (Scrum-inspired)} approach will be followed because it allows iterative progress and frequent feedback from the RP. Each milestone will serve as a sprint focusing on new modules such as attendance, gate-pass, room management, and mess operations.
+
 \begin{itemize}
   \item Short sprints will include design, feedback, and refinement stages.
   \item RP meetings will be held bi-weekly for demonstrations and review.
@@ -158,57 +161,5 @@ An \textbf{Agile (Scrum-inspired)} approach will be followed because it allows i
   \item \textbf{Day Scholar and Visitor Tracking:} Notifications for security when day scholars or visitors enter hostel premises.
   \item \textbf{Centralized Student Record:} Unified database for attendance, permissions, and hostel history.
 \end{enumerate}
-
-% --------------------------------
-% PROJECT TIMELINE (Gantt Chart)
-% --------------------------------
-\section{Project Timeline}
-\begin{center}
-{\Large\textbf{Project Development Gantt Chart}}\\[0.3cm]
-%{\large 12-Month Agile Development Timeline}
-\end{center}
-\vspace{0.5cm}
-\begin{center}
-\begin{ganttchart}[
-    hgrid,
-    vgrid,
-    x unit=0.9cm, % Adjusted to fit A4 portrait page
-    y unit title=1cm,
-    y unit chart=1cm,
-    title height=1,
-    bar height=0.6,
-    bar label font=\small,
-    title label font=\small\bfseries,
-    bar/.append style={fill=blue!50}
-]{1}{12}
-   
-    \gantttitle{Months}{12} \\
-    \gantttitlelist{1,...,12}{1} \\
-   
-    \ganttbar[bar/.append style={fill=sprint0}]{Sprint 0: Planning \& Requirement Analysis}{1}{1} \\
-   
-    \ganttbar[bar/.append style={fill=sprint1}]{Sprint 1-3: Prototype \& Core Modules }{2}{4} \\
-   
-    \ganttbar[bar/.append style={fill=sprint2}]{Sprint 4-6: Development \& Integration }{5}{7} \\
-   
-    \ganttbar[bar/.append style={fill=sprint3}]{Sprint 7-9: Testing \& Refinement}{8}{10} \\
-   
-    \ganttbar[bar/.append style={fill=sprint4}]{Sprint 10-12:  Deployment \& Final Evaluation }{11}{12}
-   
-\end{ganttchart}
-\end{center}
-\vspace{0.5cm}
-
-\newpage
-\section*{References}
-\begin{enumerate}
-  \item K. Beck et al., “Manifesto for Agile Software Development,” \textit{Agile Alliance}, 2001. [Online]. Available: \url{https://agilemanifesto.org}
-  \item J. Highsmith, “Agile Software Development Ecosystems,” \textit{Addison-Wesley}, 2002.
-  \item S. Sharma and R. Gupta, “A Web-Based Hostel Management System,” \textit{International Journal of Computer Applications}, vol. 184, no. 3, pp. 10–14, 2022.
-  \item A. Rahman and M. Singh, “Automation in Campus Hostel Management Using Cloud-Based Systems,” \textit{IEEE Access}, vol. 9, pp. 12345–12358, 2021.
-  \item P. Feuersänger, “The pgfgantt Package: Drawing Gantt Charts with TikZ,” \textit{CTAN}, 2023. [Online]. Available: \url{https://ctan.org/pkg/pgfgantt}
-  \item L. Lamport, “LaTeX: A Document Preparation System,” 2nd ed., \textit{Addison-Wesley}, 2023.
-\end{enumerate}
-
 
 \end{document}
