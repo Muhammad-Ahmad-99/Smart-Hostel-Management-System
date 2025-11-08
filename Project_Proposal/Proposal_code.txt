@@ -151,9 +151,6 @@ An \textbf{Agile (Scrum-inspired)} approach will be followed because it allows i
 % --------------------------------
 \section{Tools and Technologies}
 \begin{itemize}
-  \item \textbf{Front-End:} React.js (component-based interface)
-  \item \textbf{Back-End:} Node.js + Express.js (mock API for model stage)
-  \item \textbf{Database:} JSON fixtures or MongoDB for future deployment
   \item \textbf{Design:} Figma (for wireframes and user flows)
   \item \textbf{Version Control:} GitHub (repository and issue tracking)
   \item \textbf{Documentation:} LaTeX (formal report preparation)
