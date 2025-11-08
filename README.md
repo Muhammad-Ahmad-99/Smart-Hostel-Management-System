@@ -31,11 +31,11 @@ Our project aims to create a centralized system that improves efficiency, accura
 
 ## 👥 Project Team
 
-| Role | Name | Roll No. | Email |
-|------|------|---------|-------|
-| Group Lead | Muhammad Ahmad | BSCS-2024-44 | bscs24f44@namal.edu.pk |
-| Member | Asad Ullah Khan | BSCS-2024-17 | bscs24f17@namal.edu.pk |
-| Member | Maryam Rashid | BSCS-2024-33 | bscs24f33@namal.edu.pk |
+| Name | Roll No. | Email |
+|------|---------|-------|
+| Muhammad Ahmad | BSCS-2024-44 | bscs24f44@namal.edu.pk |
+| Asad Ullah Khan | BSCS-2024-17 | bscs24f17@namal.edu.pk |
+| Maryam Rashid | BSCS-2024-33 | bscs24f33@namal.edu.pk |
 
 ---
 
