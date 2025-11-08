@@ -8,8 +8,8 @@
 
 ## 📘 Project Overview
 
-The Smart Hostel Management System aims to simplify daily hostel management tasks at Namal University. Currently, processes like room allocation, complaint handling, and student records are manual, causing delays and errors.  
-This system provides a digital platform for students and hostel staff to manage hostel operations efficiently.
+The Smart Hostel Management System is to simplify daily hostel management tasks at Namal University and its Hostel. As currently mostly processes like room allocation, complaint handling, and student records are manual, causing delays and errors.  
+This system provides a digital platform for students and hostel staff to manage hostel operations efficiently and easily.
 
 ---
 
@@ -17,16 +17,15 @@ This system provides a digital platform for students and hostel staff to manage 
 
 - Automate hostel records (room allocation, complaints, attendance).  
 - Provide wardens and staff an easy way to manage hostel data.  
-- Allow students to submit complaints and requests digitally.  
+- Allow students to submit complaints and reasons to exit hostel/university digitally.  
 - Reduce paperwork and improve transparency.  
-- Offer reports and analytics for decision-making.
 
 ---
 
 ## 🧩 Problem Statement
 
-Hostel management currently relies on manual record-keeping, which makes tracking requests, complaints, and room assignments slow and error-prone.  
-Our project aims to create a centralized system that improves efficiency, accuracy, and user experience.
+Hostel management currently workng through manual record-keeping which makes keeping records of requests, complaints, and room assignments slow and error-prone.  
+Our project focuses to create a centralized system that improves efficiency, accuracy, and also user experience.
 
 ---
 
@@ -43,15 +42,15 @@ Our project aims to create a centralized system that improves efficiency, accura
 ## 🤝 Requirement Provider
 
 - **Name:** Miss Nida Sultan Nahra  
-- **Role:** Hostel Warden & English Mentor  
-- **Organization:** Namal University, Mianwali  
+- **Role:** Hostel Warden & English Lecturer  
+- **Organization:** Namal University Mianwali  
 
 ---
 
 ## 🗓️ Meetings & Documentation
 
-- All meetings are recorded in a shared Google Sheet.  
-- Video recordings of meetings are stored in `Meeting_Videos/`.
+- All meetings details are saved in a shared Google Sheet and `Meeting Minutes/`.  
+- Images and Video recordings of meetings are stored in `Meeting_Videos/`.
 
 ---
 
@@ -67,6 +66,9 @@ Our project aims to create a centralized system that improves efficiency, accura
 
 | Category | Tools / Platforms |
 |----------|-----------------|
+| Front-End | React.js (component-based interface) |
+| Back-End | Node.js + Express.js (mock API for model stage) |
+| Database | JSON fixtures or MongoDB for future deployment |
 | Design | Figma |
 | Version Control | Git & GitHub |
 | Documentation | LaTeX |
@@ -75,7 +77,7 @@ Our project aims to create a centralized system that improves efficiency, accura
 
 ## ⚙️ Development Methodology
 
-**Agile** is chosen for its flexibility and iterative approach. Each sprint lasts two weeks, followed by feedback sessions.
+**Agile** methodology is chosen for its flexibility and iterative approach. Each sprint lasts two months, followed by feedback sessions.
 
 | Phase | Duration | Deliverables |
 |-------|---------|-------------|
