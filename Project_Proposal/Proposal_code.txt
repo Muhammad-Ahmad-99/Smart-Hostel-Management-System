@@ -1,0 +1,136 @@
+\documentclass[12pt]{article}
+\usepackage{mathptmx}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage{setspace}
+\setstretch{1.15}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage{graphicx}  % Required for including images
+
+
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
+
+\begin{document}
+
+% --------------------------------
+% COVER PAGE
+% --------------------------------
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+    {\Large \textbf{Smart Hostel Management System}\\[0.5cm]
+    \normalsize Project Proposal}\\[1cm]
+
+    \includegraphics[width=7cm]{download.png}\\[1cm]
+
+    {\large Department of Computer Science\\
+    Namal University, Mianwali\\[1.5cm]}
+    
+    {\normalsize \textbf{Team Members}\\[0.3cm]
+    \begin{tabular}{|@{}l|l@{}|}\hline
+    \quad Muhammad Ahmad & NUM-BSCS-2024-44  \quad \quad\\\hline
+    \quad Asad Ullah Khan & NUM-BSCS-2024-17  \quad \quad\\\hline
+    \quad Maryam Rashid & NUM-BSCS-2024-33  \quad \quad\\ \hline
+    \end{tabular}
+    \\[1cm]
+    \textbf{Requirement Provider (RP)}\\
+    Ms. Nida Sultan Nahra 
+    
+    (Hostel Warden, Namal University)\\[1cm]
+    \textbf{Submission Date:} \today
+    }
+    \vfill
+\end{titlepage}
+
+
+\tableofcontents
+\newpage
+
+% --------------------------------
+% RP AGREEMENT
+% --------------------------------
+\section{Requirement Provider Agreement}
+This agreement confirms the collaboration between the student team and the Requirement Provider (RP) for the Smart Hostel Management System project. The goal of this agreement is to formalize the RP's role in providing requirements, feedback, and acceptance testing during milestone reviews.
+
+\subsection*{Agreement Terms}
+\begin{itemize}
+  \item The RP (Ms. Nida Sultan Nahra) agrees to act as the primary user and subject matter expert for the Smart Hostel Management System.
+  \item The Team agrees to meet the RP at least once every two weeks (physically or virtually) and to maintain meeting minutes for each meeting.
+  \item The Team will produce the Milestone-1 deliverables (project proposal in LaTeX, meeting minutes template, and a recorded first meeting) and incorporate RP feedback in later milestones.
+  \item The RP acknowledges that the current deliverable is a software model/proposal; later work may convert the model to a deployed online system.
+\end{itemize}
+
+\subsection*{Signatures (Placeholders)}
+\vspace{0.5cm}
+
+\noindent
+\begin{tabular}{p{7cm} p{7cm}}
+Team Representative:  & Requirement Provider: \\[0.5cm] 
+Name: Muhammad Ahmad & Name: Ms. Nida Sultan Nahra \\[1cm]
+Sign: \hrulefill & Sign: \hrulefill \\[0.5cm]
+Date: \hrulefill & Date: \hrulefill \\[0.5cm]
+\end{tabular}
+
+\newpage
+
+% ����add missing parts from here
+
+% --------------------------------
+% STAKEHOLDERS
+% --------------------------------
+\section{Stakeholder Identification}
+\begin{itemize}
+  \item \textbf{Requirement Provider (RP):} Ms. Nida Sultan Nahra Hostel Warden and Lecturer who identified real-world issues.
+  \item \textbf{Hostel Warden and Assistants:} End-users for attendance verification, approvals, and room assignments.
+  \item \textbf{Students (Residents):} Main users who will request gate-passes, report maintenance issues, and mark attendance.
+  \item \textbf{Mess Committee / Staff:} Users who will post menus, handle payments, and record complaints.
+  \item \textbf{Security Guards:} Personnel responsible for validating approved passes and monitoring movements.
+\end{itemize}
+
+% --------------------------------
+% DEVELOPMENT METHODOLOGY
+% --------------------------------
+\section{Software Development Methodology}
+An \textbf{Agile (Scrum-inspired)} approach will be followed because it allows iterative progress and frequent feedback from the RP. Each milestone will serve as a sprint focusing on new modules such as attendance, gate-pass, room management, and mess operations.
+
+\begin{itemize}
+  \item Short sprints will include design, feedback, and refinement stages.
+  \item RP meetings will be held bi-weekly for demonstrations and review.
+  \item Documentation and prototype updates will be version-controlled on GitHub.
+\end{itemize}
+
+% --------------------------------
+% TOOLS AND TECHNOLOGIES
+% --------------------------------
+\section{Tools and Technologies}
+\begin{itemize}
+  \item \textbf{Front-End:} React.js (component-based interface)
+  \item \textbf{Back-End:} Node.js + Express.js (mock API for model stage)
+  \item \textbf{Database:} JSON fixtures or MongoDB for future deployment
+  \item \textbf{Design:} Figma (for wireframes and user flows)
+  \item \textbf{Version Control:} GitHub (repository and issue tracking)
+  \item \textbf{Documentation:} LaTeX (formal report preparation)
+\end{itemize}
+
+% --------------------------------
+% CORE FEATURES
+% --------------------------------
+\section{Core Functionalities}
+\begin{enumerate}
+  \item \textbf{Attendance Module:} Automated attendance record linked with biometric data and real-time dashboard for wardens.
+  \item \textbf{Gate-Pass System:} Online leave and outing requests with digital approval and security notifications.
+  \item \textbf{Room Management:} Allocation according to capacity, real-time vacant room view, and clearance tracking.
+  \item \textbf{Mess Management:} Menu publishing, complaint handling, and emergency meal requests with limited credit.
+  \item \textbf{Day Scholar and Visitor Tracking:} Notifications for security when day scholars or visitors enter hostel premises.
+  \item \textbf{Centralized Student Record:} Unified database for attendance, permissions, and hostel history.
+\end{enumerate}
+
+\end{document}
