@@ -103,14 +103,14 @@ These issues highlight the need for a centralized, automated system that tracks 
 % OBJECTIVES
 % --------------------------------
 \section{Project Objectives}
-The Smart Hostel Management System aims to:
+Smart Hostel Management System will be used to:
 \begin{itemize}
-  \item Digitize attendance tracking and automate absentee detection through biometric data integration.
-  \item Enable online gate-pass and leave applications with digital approvals and notifications.
-  \item Manage hostel room allocation dynamically according to capacity and availability.
-  \item Introduce digital mess management for payments, menus, and complaint handling.
-  \item Create an integrated student database that updates across all hostel services.
-  \item Reduce administrative load on the warden and improve transparency for all stakeholders.
+  \item Digital attendance tracking and automatic informing absentees using biometric data integration.
+  \item Allows for online gate passes and has the option to submit applications as digital proof before exiting the hotel/university and notifications.
+  \item Manage hostel room allocation according to the capacity and availability for students.
+  \item Introduce digital mess management for online payments, debit using student accounts, mess menus, and also complaint handling.
+  \item Create an integrated student database that updates the hostel and university system to improve management.
+  \item Reduce the administrative burden on the warden and improve transparency for all stakeholders.
 \end{itemize}
 
 % --------------------------------
@@ -129,11 +129,12 @@ The Smart Hostel Management System aims to:
 % DEVELOPMENT METHODOLOGY
 % --------------------------------
 \section{Software Development Methodology}
-An \textbf{Agile (Scrum-inspired)} approach will be followed because it allows iterative progress and frequent feedback from the RP. Each milestone will serve as a sprint focusing on new modules such as attendance, gate-pass, room management, and mess operations.
+An \textbf{Agile (Scrum-inspired)} approach will be used for this system because this allows iterative progress and also frequent feedback from the RP. Each of its milestones will serve as a sprint focusing on new modules such as attendance, gate pass, room management, and mess operations.
+
 \begin{itemize}
-  \item Short sprints will include design, feedback, and refinement stages.
-  \item RP meetings will be held bi-weekly for demonstrations and review.
-  \item Documentation and prototype updates will be version-controlled on GitHub.
+  \item Its short sprints include design, feedback, and refinement stages.
+  \item Meetings with RP will be held biweekly for demonstrations and review.
+  \item Documentation and the prototype will be the updated version controlled on GitHub.
 \end{itemize}
 
 % --------------------------------
@@ -157,12 +158,12 @@ An \textbf{Agile (Scrum-inspired)} approach will be followed because it allows i
 % --------------------------------
 \section{Core Functionalities}
 \begin{enumerate}
-  \item \textbf{Attendance Module:} Automated attendance record linked with biometric data and real-time dashboard for wardens.
-  \item \textbf{Gate-Pass System:} Online leave and outing requests with digital approval and security notifications.
-  \item \textbf{Room Management:} Allocation according to capacity, real-time vacant room view, and clearance tracking.
-  \item \textbf{Mess Management:} Menu publishing, complaint handling, and emergency meal requests with limited credit.
-  \item \textbf{Day Scholar and Visitor Tracking:} Notifications for security when day scholars or visitors enter hostel premises.
-  \item \textbf{Centralized Student Record:} Unified database for attendance, permissions, and hostel history.
+  \item \textbf{Attendance Module:} Auto attendance record will be linked with biometric data and a real-time dashboard for the warden.
+  \item \textbf{Gate-Pass System:} Online leave records will be saved as any student exits the hostel/university.
+  \item \textbf{Room Management:} Allocation according to room capacity, real-time vacant room view, and clearance tracking after a specific time set by the warden.
+  \item \textbf{Mess Management:} Menu publishing, complaint handling, and entering meal amount in student account as debt.
+  \item \textbf{Day Scholar tracking:} Notifications for the entry of day scholars in the hostel premises.
+  \item \textbf{Centralized Student Record:} Unified database for attendance, permissions, and hostel history for better management.
 \end{enumerate}
 
 % --------------------------------
