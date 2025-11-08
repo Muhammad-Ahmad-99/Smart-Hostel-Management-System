@@ -80,6 +80,45 @@ Date: \hrulefill & Date: \hrulefill \\[0.5cm]
 \end{tabular}
 
 \newpage
+% --------------------------------
+% INTRODUCTION
+% --------------------------------
+\section{Introduction}
+Hostels are an integral part of Namal University’s campus life. Both male and female students live within a single shared hostel boundary, but each hostel area is separated by secure boundaries. The hostels share a common cafeteria and study/event area, where students can interact and study together before returning to their respective hostels at night.
+
+Currently, many hostel-related activities—such as attendance, visitor permissions, room allocation, and mess complaints—are handled manually. Female residents, for example, mark their attendance on a biometric machine by 10:00 pm, and wardens have to verify attendance reports manually. There is no automated system to track absentees or to easily confirm leaves, which can lead to errors or unintentional absences being overlooked.
+
+Manual gate-pass slips, unclear room allotments, and non-digital records increase administrative workload and confusion. These challenges inspired this project, \textbf{Smart Hostel Management System (SHMS)}, a web-based software model proposed under the guidance of Ms. Nida Sultan Nahra (Hostel Warden and English Lecturer). The project aims to digitize attendance, room management, gate-pass permissions, and mess tracking in a single portal accessible to wardens, students, and hostel staff.
+
+% --------------------------------
+% PROBLEM STATEMENT
+% --------------------------------
+\section{Problem Statement}
+The existing hostel management process at Namal University is largely manual, leading to inefficiencies and delays. Key issues include:  
+
+Manual attendance tracking for girls via biometric machines, and no automated system for boys, causing time-consuming verification and errors.  
+Hostel exit procedures rely on written permission slips, which may be unavailable outside office hours, making emergency exits difficult.  
+Day scholars and visitors are not tracked digitally, creating confusion for hostel security.  
+Room allocation conflicts arise due to varying capacities and incomplete clearance when students leave.  
+Mess payments and emergency meal requests lack flexibility and are difficult to manage manually.  
+Female students’ movement restrictions after 10:00 pm are enforced manually, creating potential safety and monitoring gaps.  
+
+These issues highlight the need for a centralized, automated system that tracks attendance, exits, room occupancy, and mess usage in real time, ensuring security, efficiency, and transparency for both students and hostel staff.
+
+% --------------------------------
+% OBJECTIVES
+% --------------------------------
+\section{Project Objectives}
+The Smart Hostel Management System aims to:
+\begin{itemize}
+  \item Digitize attendance tracking and automate absentee detection through biometric data integration.
+  \item Enable online gate-pass and leave applications with digital approvals and notifications.
+  \item Manage hostel room allocation dynamically according to capacity and availability.
+  \item Introduce digital mess management for payments, menus, and complaint handling.
+  \item Create an integrated student database that updates across all hostel services.
+  \item Reduce administrative load on the warden and improve transparency for all stakeholders.
+\end{itemize}
+
 
 % ����add missing parts from here
 
