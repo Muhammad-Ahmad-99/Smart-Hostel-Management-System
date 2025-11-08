@@ -61,16 +61,18 @@ This agreement confirms the collaboration between the student team and the Requi
   \item The RP acknowledges that the current deliverable is a software model/proposal; later work may convert the model to a deployed online system.
 \end{itemize}
 
-\subsection*{Signatures (Placeholders)}
+\subsection*{Signatures}
 \vspace{0.5cm}
 
 \noindent
 \begin{tabular}{p{7cm} p{7cm}}
 Team Representative:  & Requirement Provider: \\[0.5cm] 
 Name: Muhammad Ahmad & Name: Ms. Nida Sultan Nahra \\[1cm]
-Sign: \hrulefill & Sign: \hrulefill \\[0.5cm]
-Date: \hrulefill & Date: \hrulefill \\[0.5cm]
+Sign: \quad \includegraphics[width=3cm]{ahmad_sign.png} 
+& Sign: \quad \includegraphics[width=4cm]{mam_sign.png} \\[.20cm]
+Date: \today & Date: \today \\[0.5cm]
 \end{tabular}
+
 
 \newpage
 
