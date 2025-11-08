@@ -79,10 +79,10 @@ Our project aims to create a centralized system that improves efficiency, accura
 
 | Phase | Duration | Deliverables |
 |-------|---------|-------------|
-| Requirements & Design | 2–3 weeks | SRS, UI Mockups |
-| Prototype Development | 4 weeks | Functional Prototype |
-| Testing & Feedback | 2 weeks | User Testing Report |
-| Final Deployment | 2 weeks | Final Demo & Documentation |
+| Requirements & Design | 2–3 months | SRS, UI Mockups |
+| Prototype Development | 4 months | Functional Prototype |
+| Testing & Feedback | 3 months | User Testing Report |
+| Final Deployment | 2 months | Final Demo & Documentation |
 
 ---
 
