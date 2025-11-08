@@ -1,6 +1,6 @@
 # 🏡 Smart Hostel Management System
 
-**Department of Computer Science – Namal University, Mianwali**  
+**Department of Computer Science (Namal University, Mianwali)**  
 *Course: Software Engineering | Semester Project*
 
 ---
@@ -93,6 +93,6 @@ Our project aims to create a centralized system that improves efficiency, accura
 - `Meeting Minutes/` – Google Sheet exports  
 - `Meeting Videos/` – Recorded sessions  
 - `Project_Proposal/` – Proposal files  
-- `Documentation/` – Notes, AI prompts used  
+- `Documentation/` – Notes
 - `src/` – Source code  
 - `README.md` – Project summary
