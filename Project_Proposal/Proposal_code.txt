@@ -6,14 +6,8 @@
 \geometry{a4paper, margin=1in}
 \usepackage{setspace}
 \setstretch{1.15}
-\usepackage{array}
-\usepackage{booktabs}
 \usepackage{titlesec}
-\usepackage{enumitem}
-\usepackage{listings}
-\usepackage{caption}
-\usepackage{graphicx}  % Required for including images
-
+\usepackage{graphicx}
 
 \titleformat{\section}{\normalfont\large\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
@@ -50,7 +44,6 @@
     \vfill
 \end{titlepage}
 
-
 \tableofcontents
 \newpage
 
@@ -80,6 +73,7 @@ Date: \hrulefill & Date: \hrulefill \\[0.5cm]
 \end{tabular}
 
 \newpage
+
 % --------------------------------
 % INTRODUCTION
 % --------------------------------
@@ -118,9 +112,6 @@ The Smart Hostel Management System aims to:
   \item Create an integrated student database that updates across all hostel services.
   \item Reduce administrative load on the warden and improve transparency for all stakeholders.
 \end{itemize}
-
-
-% ����add missing parts from here
 
 % --------------------------------
 % STAKEHOLDERS
