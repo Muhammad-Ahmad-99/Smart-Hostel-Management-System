@@ -68,9 +68,6 @@ Our project aims to create a centralized system that improves efficiency, accura
 | Category | Tools / Platforms |
 |----------|-----------------|
 | Design | Figma |
-| Frontend | HTML, CSS, JavaScript, React (tentative) |
-| Backend | Python (Flask/Django) |
-| Database | MySQL |
 | Version Control | Git & GitHub |
 | Documentation | LaTeX |
 
