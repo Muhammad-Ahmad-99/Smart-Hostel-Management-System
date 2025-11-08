@@ -1,7 +1,7 @@
 # 🏡 Smart Hostel Management System
 
 **Department of Computer Science – Namal University, Mianwali**  
-*Course: Software Engineering | Semester Project – Milestone 1*
+*Course: Software Engineering | Semester Project*
 
 ---
 
