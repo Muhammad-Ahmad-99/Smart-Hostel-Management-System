@@ -2,7 +2,7 @@
 
 **Department of Computer Science (Namal University, Mianwali)**  
 *Course: Software Engineering | Semester Project*
-Google Sheet Link: https://docs.google.com/spreadsheets/d/19YDsyAdm93ZzYEPhOQ8Ynl13ZxgnjzLOFdT513q0DzY/edit?usp=sharing
+-Google Sheet Link: https://docs.google.com/spreadsheets/d/19YDsyAdm93ZzYEPhOQ8Ynl13ZxgnjzLOFdT513q0DzY/edit?usp=sharing
 ---
 
 ## 📘 Project Overview
