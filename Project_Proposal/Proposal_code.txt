@@ -189,15 +189,15 @@ An \textbf{Agile (Scrum-inspired)} approach will be used for this system because
     \gantttitle{Months}{12} \\
     \gantttitlelist{1,...,12}{1} \\
    
-    \ganttbar[bar/.append style={fill=sprint0}]{Sprint 0: Planning \& Requirement Analysis}{1}{1} \\
+    \ganttbar[bar/.append style={fill=sprint0}]{Sprint 1: Planning \& Requirement Analysis}{1}{1} \\
    
-    \ganttbar[bar/.append style={fill=sprint1}]{Sprint 1-3: Prototype \& Core Modules }{2}{4} \\
+    \ganttbar[bar/.append style={fill=sprint1}]{Sprint 2-4: Prototype \& Core Modules }{2}{4} \\
    
-    \ganttbar[bar/.append style={fill=sprint2}]{Sprint 4-6: Development \& Integration }{5}{7} \\
+    \ganttbar[bar/.append style={fill=sprint2}]{Sprint 5-7: Development \& Integration }{5}{7} \\
    
-    \ganttbar[bar/.append style={fill=sprint3}]{Sprint 7-9: Testing \& Refinement}{8}{10} \\
+    \ganttbar[bar/.append style={fill=sprint3}]{Sprint 8-10: Testing \& Refinement}{8}{10} \\
    
-    \ganttbar[bar/.append style={fill=sprint4}]{Sprint 10-12:  Deployment \& Final Evaluation }{11}{12}
+    \ganttbar[bar/.append style={fill=sprint4}]{Sprint 11-12:  Deployment \& Final Evaluation }{11}{12}
    
 \end{ganttchart}
 \end{center}
