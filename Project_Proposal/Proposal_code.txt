@@ -8,17 +8,19 @@
 \setstretch{1.15}
 \usepackage{titlesec}
 \usepackage{graphicx}
-\usepackage{pgfgantt} % Added for Gantt chart
-\usepackage{xcolor} % Added for custom colors
+\usepackage{pgfgantt} % for Gantt chart
+\usepackage{xcolor} % for custom colors
+
+
 \titleformat{\section}{\normalfont\large\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
 
 % Define custom colors for Gantt chart
-\definecolor{sprint0}{RGB}{240,147,251}
+\definecolor{sprint0}{RGB}{240,47,21}
 \definecolor{sprint1}{RGB}{79,172,254}
-\definecolor{sprint2}{RGB}{67,233,123}
-\definecolor{sprint3}{RGB}{250,112,154}
-\definecolor{sprint4}{RGB}{48,207,208}
+\definecolor{sprint2}{RGB}{67,233,13}
+\definecolor{sprint3}{RGB}{50,112,154}
+\definecolor{sprint4}{RGB}{48,27,208}
 
 \begin{document}
 
@@ -204,6 +206,9 @@ An \textbf{Agile (Scrum-inspired)} approach will be used for this system because
 \newpage
 \section*{References}
 \begin{enumerate}
+  \item Github repository Link
+  \href{https://github.com/Muhammad-Ahmad-99/Smart-Hostel-Management-System}
+
   \item K. Beck et al., “Manifesto for Agile Software Development,” \textit{Agile Alliance}, 2001. [Online]. Available: \url{https://agilemanifesto.org}
   \item J. Highsmith, “Agile Software Development Ecosystems,” \textit{Addison-Wesley}, 2002.
   \item S. Sharma and R. Gupta, “A Web-Based Hostel Management System,” \textit{International Journal of Computer Applications}, vol. 184, no. 3, pp. 10–14, 2022.
