@@ -1,0 +1,1025 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multicol}
+
+% Header and Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Smart Hostel Management System}
+\fancyhead[R]{SRS v1.0}
+\fancyfoot[C]{\thepage}
+
+% Title formatting
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{1em}{}
+
+% Hyperref setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={SHMS SRS},
+    pdfpagemode=FullScreen,
+}
+
+\begin{document}
+
+% Title Page
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+    
+    {\Huge\bfseries Software Requirements Specification\\[0.5cm]}
+    {\huge Smart Hostel Management System\\[2cm]}
+
+    \includegraphics[width=7cm]{download.png}\\[1cm]
+    
+   
+    {\large Prepared for:\\
+    Ms. Nida Sultan Nahra\\
+    Hostel Warden, Namal University\\[1cm]}
+    
+    {\large Prepared by:\\[0.5cm]
+    \begin{tabular}{|@{}l|l@{}|}\hline
+    \quad Muhammad Ahmad & NUM-BSCS-2024-44 \quad \quad\\\hline
+    \quad Asad Ullah Khan & NUM-BSCS-2024-17 \quad \quad\\\hline
+    \quad Maryam Rashid & NUM-BSCS-2024-33 \quad \quad\\ \hline 
+    \end{tabular} \\[.5cm]
+    
+    {\large Department of Computer Science\\
+    Namal University, Mianwali\\[1cm]}
+    
+    {\large November 28, 2025}
+}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\section{Introduction}
+
+\subsection{Purpose}
+\label{subsec:purpose}
+
+This Software Requirements Specification (SRS) document provides a detailed description of all functions and specifications of the Smart Hostel Management System (SHMS). This (SRS) document is intended for:
+
+\begin{itemize}
+    \item \textbf{Hostel Administration:} Ms. Nida Sultan Nahra (Hostel Warden) and hostel management staff who will use the system to manage daily hostel operations, and those operations are like monitoring student attendance, getting online complaints by students and allocation of the rooms.
+    
+    \item \textbf{Development Team:} The software development team (Muhammad Ahmad, Asad Ullah Khan, and Maryam Rashid) who will design, implement, test, and maintain the system based on the requirements specified in this document and discussed with their RP.
+    
+    \item \textbf{Students (End Users):} Hostel residents who will interact with the system to mark attendance, sumbit online reason before leaving Hostel/University, register complaints, group wise room selection and manage their hostel-related activities.
+
+    On the other Hand Day Scholars (student) will also included in the attendance, in order to make proper check in that who enter hostel or when exit Hostel/University.
+    
+    \item \textbf{System Administrators:} Technical staff will be responsible for deploying, configuring, and maintaining the system infrastructure in the Hostel as well as in the university.
+    
+    \item \textbf{Quality Assurance Team:} Testing will be done by the team to verify that the implemented system meets all specified requirements and quality standards.
+    
+    \item \textbf{Stakeholders:} Hostel Management, University management, security personnel, maintenance staff who interact with or are affected by the system.
+\end{itemize}
+
+The purpose of SHMS is to automate and digitize hostel management operations at Namal University to replace the manual and inconsistent processes with a unified, efficient, and transparent digital platform.
+
+\subsection{Scope}
+\label{subsec:scope}
+
+The Smart Hostel Management System (SHMS) is a comprehensive web-based application designed to manage all aspects of hostel operations at Namal University. The system is designed for female hostel facilities and operates within the girls hostel environment and as well as in the university. It enforces strict security and access controls to ensure that only authorized users can access system functions and student information. All data related to hostel residents is handled securely to maintain privacy and safety at all times.
+
+\subsubsection{System Name and Components}
+
+\textbf{System Name:} Smart Hostel Management System (SHMS)
+
+\textbf{Major Components:}
+\begin{itemize}
+    \item Attendance Management Module
+    \item Biometric Entry and Exit Tracking System
+    \item Room Allocation and Management Module
+    \item Day Scholar Tracking Module
+    \item Centralized Student Database
+    \item Reporting and Analytics Dashboard
+    \item Complaint Management System
+\end{itemize}
+
+\subsubsection{What the Software Will Do}
+
+The SHMS will accomplish the following objectives:
+
+\begin{enumerate}
+    \item \textbf{Automate Attendance Tracking:}
+    \begin{itemize}
+        \item Integrate with the existing biometric systems to automatically record student attendance for hostelers using biometric devices placed inside the hostel
+        \item Provide real-time attendance dashboards for wardens
+        \item Automatically identify and flag absent students
+        \item Generate daily, weekly, and monthly attendance reports
+        \item Send automated notifications (through mail or SMS) to wardens at 10:05 PM about unauthorized absences and absentee list
+        \item Link attendance with the last online exit application submitted by the student
+    \end{itemize}
+    
+    \item \textbf{Biometric Entry and Exit Tracking:}
+    \begin{itemize}
+        \item Enable students to submit online reason/application before exiting hostel or university (no approval needed except for restricted times after 5 PM)
+        \item Provide hostel warden with a centralized interface to monitor and view entry/exit logs in real time.
+        \item Automatically records each student during entry/exit without the need for manual gate passes using biometric devices at main gate
+        \item Allow security personnel to make sure that students are using the biometric system during entry/exit points.
+        \item Track student return status and send automated notification for late returns or violations (immediate for restricted time violations)
+        \item For short leaves (shopping, medical, etc.), exit allowed only before 5 PM and entry compulsory before 5 PM, with immediate notifications for violations
+        \item For day scholars, track entry/exit from hostel and university (application required for non-routine university exit and no approval needed)
+        \item Send daily notifications at 10:05 PM to warden about attendance, day scholars in hostel, and any security events
+    \end{itemize}
+    
+    \item \textbf{Streamline Room Management:}
+    \begin{itemize}
+        \item Maintain real-time inventory of approximately 50 rooms with capacities of 2, 4, or 8 beds
+        \item Facilitate group-wise room allocation where exactly 2, 4, or 8 students agree and one submits the form with all details; no duplicate registrations allowed
+        \item Track room occupancy history and maintenance schedules
+        \item Manage room change requests with reason and vacancy viewing
+        \item Handle room clearance processes when students vacate
+        \item Generate room occupancy reports and statistics
+    \end{itemize}
+    
+    \item \textbf{Handle Complaints:}
+    \begin{itemize}
+        \item Allow students to submit online complaints with details and attachments
+        \item Send immediate notifications to warden
+        \item Track status and resolution
+        \item Generate complaint reports
+    \end{itemize}
+    
+    \item \textbf{Monitor Day Scholar Access:}
+    \begin{itemize}
+        \item Register and manage day scholar profiles
+        \item Track day scholar entry and exit from hostel premises using biometrics
+        \item Send real-time notifications when day scholars enter hostel
+        \item Maintain logs for day scholars
+        \item Include current day scholar count in daily 10:05 PM notification
+    \end{itemize}
+    
+    \item \textbf{Centralize Student Information:}
+    \begin{itemize}
+        \item Maintain unified student profiles with hostel-related information
+        \item Synchronize with university student information systems
+        \item Provide role-based access to student data
+        \item Generate comprehensive student hostel history reports
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{Benefits and Objectives}
+
+The implementation of SHMS will provide the following benefits:
+
+\begin{itemize}
+    \item \textbf{Efficiency:} Reduce manual paperwork and administrative load by 70-80\% and allowing wardens to focus on student welfare rather than administrative tasks.
+    
+    \item \textbf{Transparency:} Provide real-time visibility into all hostel operations for authorized stakeholders and ensuring that everyone has equal access to system.
+    
+    \item \textbf{Security:} Enhance hostel security through digital verification on gate entry/exit through biometric, automated absence tracking, and day scholar monitoring, with focus on girls' security.
+    
+    \item \textbf{Accuracy:} Eliminate human errors in attendance marking or finding who was absent and help a lot in record keeping.
+    
+    \item \textbf{Accessibility:} Enable 24/7 access to hostel services and information through web interfaces.
+    
+    \item \textbf{Data-Driven Decision Making:} Offer detailed reports and analytics on student activities and hostel operations to guide effective management and improving overall hostel efficiency.
+\end{itemize}
+
+\subsubsection{What the Software Will NOT Do}
+
+To set clear boundaries, the following are explicitly outside the scope of SHMS:
+
+\begin{itemize}
+    \item The system will not handle academic performance tracking or course registration (these remain with the university's academic management system)
+    
+    \item The system will not process financial aid or scholarship applications (handled by university financial services)
+    
+    \item The system will not manage library operations, sports facilities, or other non-hostel university services
+    
+    \item The system will not replace or integrate with existing university ERP for financial accounting
+    
+    \item The system will not provide medical services management or health records (it will be handled by university health center)
+    
+    \item The system will not manage faculty or staff housing (scope limited to girls student)
+    
+    \item The system will not handle disciplinary actions or conduct violations (these remain administrative decisions documented separately)
+\end{itemize}
+
+\newpage
+\subsection{Definitions, Acronyms, and Abbreviations}
+This section provides clear definitions of important terms and abbreviations used throughout the Smart Hostel Management System (SHMS) documentation. These explanations ensure that all readers understand the terminology consistently.
+\begin{table}[h!]
+\centering
+\begin{tabular}{|p{3cm}|p{10cm}|}
+\hline
+\textbf{Term} & \textbf{Definition} \\ \hline
+\textbf{SHMS} & Smart Hostel Management System the software platform designed to manage hostel operations such as attendance, gate passes, and security activities. \\ \hline
+\textbf{Warden} & The hostel administrator who oversees daily operations, approves requests, monitors attendance, and manages students. \\ \hline
+\textbf{Biometric System} & A biometric device used to mark student attendance and connected with the SHMS for automated updates. \\ \hline
+\textbf{Absentee} & A student who fails to mark attendance before the deadline and does not hold an approved gate pass. \\ \hline
+\textbf{Role-Based Access} & A security method in which each user role (student, warden, security) has access only to the features relevant to their responsibilities. \\ \hline
+\textbf{SRS} & Software Requirements Specification this document, which describes how the system should function. \\ \hline
+\textbf{IEEE} & Institute of Electrical and Electronics Engineers the organization whose documentation standards are followed in this SRS. \\ \hline
+\textbf{UI} & User Interface the visual and interactive elements of the system that users interact with. \\ \hline
+\textbf{API} & Application Programming Interface enables communication between SHMS and other systems such as biometric machines or student databases. \\ \hline
+\textbf{HTTPS} & Hypertext Transfer Protocol Secure used for secure communication between the system and the server. \\ \hline
+\textbf{JSON} & JavaScript Object Notation a lightweight format used for exchanging data between system components. \\ \hline
+\textbf{CSV} & Comma-Separated Values a file format used for importing or exporting hostel-related data. \\ \hline
+\textbf{SMTP} & Simple Mail Transfer Protocol used by the system to send automated email notifications. \\ \hline
+\textbf{SMS} & Short Message Service used for sending text alerts such as approval messages or warnings. \\ \hline
+\end{tabular}
+\end{table}
+\newpage
+\subsection{References}
+This section lists the key documents, standards, and resources that were consulted during the preparation of this Software Requirements Specification (SRS). These materials support the structure, technical decisions, and background of the Smart Hostel Management System.
+\begin{enumerate}
+    \item \textbf{IEEE Standard 830-1984}: Guide for preparing Software Requirements Specifications.
+    \item \textbf{IEEE Standard 29148-2011}: International standard for systems and software requirements engineering processes.
+    \item \textbf{Namal University Hostel Rules and Regulations (2025)}: Official policies regarding hostel operations, attendance, and entry or exit procedures.
+    \item \textbf{React.js Documentation}: Official reference for frontend development --- \url{https://reactjs.org}.
+    \item \textbf{Node.js Documentation}: Backend development reference --- \url{https://nodejs.org}.
+    \item \textbf{MongoDB Documentation}: Database and data model reference --- \url{https://www.mongodb.com/docs}.
+    \item \textbf{Biometric Device Vendor Manual (2024)}: Technical documentation for the fingerprint attendance hardware integrated with the system.
+\end{enumerate}
+\newpage
+\subsection{Overview}
+This section provides a brief summary of how the Software Requirements Specification (SRS) is arranged. It helps readers understand the flow of the document and easily locate information related to the Smart Hostel Management System (SHMS).
+\subsubsection{Document Structure}
+This SRS document is organized into several major sections, each focusing on a different aspect of the system:
+\begin{itemize}
+    \item \textbf{Introduction:} Presents the purpose, scope, key definitions, references, and an overall overview of the SHMS project.
+    \item \textbf{General Description:} Describes the system at a broader level, including main functions, user characteristics, constraints, and assumptions.
+    \item \textbf{Specific Requirements:} Provides detailed functional requirements, external interface descriptions, and behavior of key system modules such as attendance, entry or exit tracking, room management, and security verification.
+    \item \textbf{Other Non-Functional Requirements:} Covers system qualities such as security, reliability, usability, supportability, portability, and maintainability.
+    \item \textbf{Appendices:} Contains diagrams, tables, and additional supporting material that further explains different system components.
+\end{itemize}
+\subsubsection{Organization of the Document}
+The document is arranged in a clear and hierarchical format to ensure easy navigation. Each section is numbered to show how topics are connected and how the content flows from general descriptions to detailed specifications.
+Definitions and references are included near the beginning to provide context before technical requirements are introduced. Cross-references are used where needed to help readers trace related requirements across different parts of the document.
+\newpage
+\section{General Description}
+\subsection{Product Perspective}
+\label{sec:product-perspective}
+The Smart Hostel Management System (SHMS) is a new custom-developed web-based application which wll be used for Namal University's hostel operations. It addresses limitations in the current minor digital system, such as marking attendance but doesn't know who is missing, time-consuming verifications, and lack of real-time reporting. SHMS represents an evolution from previous tools (e.g., biometric devices for girls' hostel to track in/out) to an integrated platform.
+\subsubsection{Background and Current System Limitations}
+Currently, hostel management relies on manual processes: attendance is recorded via biometrics for girls but manually checked who marked attendance, gate passes are paper-based, room allocations are tracked in spreadsheets, and day scholar tracking is ad-hoc. These actions lead to errors, delays, and security risks. SHMS aims to centralize these into a digital system, reducing workload and improving accuracy.
+\subsubsection{System Interfaces}
+SHMS will integrate with:
+\begin{itemize}
+\item \textbf{Biometric Attendance Systems:} Real-time data import from fingerprint devices.
+\item \textbf{University Student Database:} API access for student profiles, enrollment, and updates.
+\item \textbf{Email/SMS Gateways:} For alert notifications.
+\end{itemize}
+\subsubsection{User Interfaces}
+Responsive and user-friendly web UI with dashboards, forms, and reports. Supports accessibility features like keyboard navigation.
+\subsubsection{Hardware Interfaces}
+\begin{itemize}
+\item Biometric devices on main gates.
+\item Server hardware or cloud (e.g., AWS/EC2 equivalents).
+\item Client devices: Desktops/Laptops, mobiles with browser support.
+\end{itemize}
+\subsubsection{Software Interfaces}
+\begin{itemize}
+\item OS: Windows OR Mobile browser.
+\item DBMS: MongoDB for data storage.
+\item Framework: Node.js/Express for backend, React.js for frontend.
+\item Browsers: Chrome, Firefox, etc.
+\end{itemize}
+\subsubsection{Communications Interfaces}
+\begin{itemize}
+\item HTTPS for secure data.
+\item SMTP for emails.
+\item RESTful APIs for internal/external communication.
+\item Optional SMS via third-party gateway.
+\end{itemize}
+\subsubsection{System Context}
+SHMS operates within hostel boundaries, aligned with university calendars, rules, and privacy policies. It interacts with external entities like students, staff, and IT systems.
+\subsection{Product Functions}
+\label{sec:product-functions}
+SHMS has main modules to handle daily hostel operations.
+\subsubsection{Attendance Management}
+This module takes care of daily attendance to keep track of student presence and safety. It supports biometric scanning, manual entry when needed, leave requests, automatic absentee lists, and helpful reports and alerts for staff.
+\subsubsection{Biometric Entry and Exit Tracking}
+This module handles student entry and exit from the hostel and university using digital verification. Students can apply online, upload documents if needed, get approvals from staff for restricted times, and security personnel verify at the gate to record actual exit and return times. The system also sends alerts for overdue returns and provides reports.
+\subsubsection{Room Management}
+This module helps assign and manage hostel rooms. It keeps a record of all rooms, suggests or assigns rooms to new students, handles transfer requests, tracks maintenance issues, and manages room clearance when students leave.
+\subsubsection{Complaint Management}
+This module looks after student complaints. Students can file complaints (with photos), and the system tracks each complaint, sending notifications to warden.
+\subsubsection{Day Scholar Tracking}
+This module controls who enters the hostel. Security staff can log day scholars, get approvals if needed, issue time-limited passes, record entry and exit times, and send alerts if someone stays too long.
+\subsection{User Characteristics}
+\label{sec:user-characteristics}
+Detailed profiles ensure the system meets diverse user needs.
+\subsubsection{Hostel Warden}
+\begin{itemize}
+\item \textbf{Technical Expertise:} Moderate; familiar with web apps but not coding.
+\item \textbf{Primary Tasks:} Approvals, reports, oversight.
+\item \textbf{Usage Frequency:} Daily, high volume.
+\item \textbf{Interface Needs:} Advanced dashboard with alerts, customizable views, and quick navigation.
+\item \textbf{Additional Notes:} May require training on advanced features like report customization.
+\end{itemize}
+\subsubsection{Assistant Warden}
+\begin{itemize}
+\item \textbf{Technical Expertise:} Basic to moderate.
+\item \textbf{Primary Tasks:} Initial approvals, verifications.
+\item \textbf{Usage Frequency:} Daily.
+\item \textbf{Interface Needs:} Task-focused UI with checklists.
+\item \textbf{Additional Notes:} Support for mobile access during inspections.
+\end{itemize}
+\subsubsection{Resident Students}
+\begin{itemize}
+\item \textbf{Technical Expertise:} High
+\item \textbf{Education:} Undergraduates.
+\item \textbf{Primary Tasks:} Requests, views, submissions.
+\item \textbf{Usage Frequency:} Daily.
+\item \textbf{Interface Needs:} Intuitive, mobile-first with push notifications.
+\end{itemize}
+\subsubsection{Security Personnel}
+\begin{itemize}
+\item \textbf{Technical Expertise:} Basic
+\item \textbf{Education:} Basic.
+\item \textbf{Primary Tasks:} Make sure Biometric Entry.
+\item \textbf{Additional Notes:} Voice guidance or Urdu interface as Biometric is done
+\end{itemize}
+
+\subsection{General Constraints}
+
+This section explains the limitations and conditions that may affect how the Smart Hostel Management System (SHMS) is designed, developed, and used. These constraints must be considered to ensure that the system functions effectively within the university environment.
+
+\subsubsection{Regulatory and Policy Constraints}
+
+\begin{itemize}
+    \item The system shall comply with all university rules and policies related to attendance, hostel operations, and student privacy.
+    \item The system shall maintain female hostel data in such a way to ensure privacy and security.
+    \item The system shall protect all stored student information according to data protection and privacy guidelines.
+\end{itemize}
+
+\subsubsection{Hardware Limitations}
+
+\begin{itemize}
+    \item The system shall operate with the existing biometric devices installed in the hostels, even if these devices have limited features or outdated APIs.
+    \item The system's performance may depend on the speed and stability of the university’s network infrastructure.
+    \item The system shall run effectively on a variety of staff devices, including desktops, laptops, tablets, and mobile phones.
+    \item The system's availability may be affected by power interruptions, and it must rely on the university's UPS or backup systems.
+\end{itemize}
+
+\subsubsection{Interface Requirements}
+
+\begin{itemize}
+    \item The system shall integrate with the existing student information database through approved APIs or supported data formats.
+    \item The system shall use standard web communication protocols to ensure compatibility across different devices and networks.
+    \item The system shall follow basic accessibility guidelines to support users with different abilities.
+\end{itemize}
+
+\subsubsection{Development Constraints}
+
+\begin{itemize}
+    \item The system shall be fully developed, tested, and deployed within the limited academic semester timeline.
+    \item The system shall be developed by a small student team, requiring the design to match their technical skill level.
+    \item The system shall be built using free or open-source technologies to avoid licensing costs.
+    \item The system shall use the predefined tech stack (React.js, Node.js, MongoDB) for consistency across all modules.
+\end{itemize}
+
+\subsubsection{Operational Constraints}
+
+\begin{itemize}
+    \item The system shall remain available during major hostel operating hours, with occasional maintenance windows when needed.
+    \item The system shall support a large number of users at the same time, especially during busy evening periods.
+    \item The system shall provide limited offline support to ensure essential features remain accessible during slow or unstable internet conditions.
+    \item The system's performance may vary during peak usage times, such as semester start or hostel room allocation days.
+\end{itemize}
+
+\subsubsection{Security and Safety Constraints}
+
+\begin{itemize}
+    \item The system shall use role-based access control to ensure that only authorized users can perform sensitive operations.
+    \item The system shall maintain secure audit logs of important user actions, such as approvals and data updates.
+    \item The system shall implement measures to protect against unauthorized access, data breaches, and cyber threats.
+    \item The system shall support emergency procedures by allowing wardens quick access to attendance and gate pass information when needed.
+\end{itemize}
+
+\subsection{Assumptions and Dependencies}
+\label{sec:assumptions}
+\subsubsection{Assumptions}
+\begin{itemize}
+\item Infrastructure provision by university.
+\item Biometric API access.
+\item Student tech access.
+\item Training provided.
+\item IT support available.
+\item Policies stable.
+\item Connectivity reliable.
+\item User adoption high.
+\end{itemize}
+\subsubsection{Dependencies}
+\begin{itemize}
+\item Vendor cooperation for biometrics.
+\item IT for database access.
+\item Network stability.
+\item RP availability.
+\item Tech stack updates.
+\item Email/SMS services.
+\item Budget for hosting.
+\end{itemize}
+
+\section{Specific Requirements}
+This section details requirements, organized by external interfaces and functional modules. Performance requirements are included per module.
+\subsection{External Interfaces}
+\label{sec:external-interfaces}
+\subsubsection{User Interfaces}
+The system shall have a clean and responsive web interface built with React.js. It will show different dashboards based on the user's role, easy forms (for example, an entry/exit request form with fields for dates and reason), and reports that can be downloaded as PDF or CSV. The interface will be simple to use, with helpful hints, clear error messages, and full support for mobile devices.
+\subsubsection{Hardware Interfaces}
+The system shall connect to biometric fingerprint devices through network APIs. The server needs at least 8GB RAM and a 4-core CPU (can be university server or cloud). Users can access the system from any computer, tablet, or phone with a modern web browser.
+\subsubsection{Software Interfaces}
+The system shall use MongoDB to store all data with proper structure for students, rooms, attendance, etc. The backend will run on Node.js with Express to handle APIs (for example, POST requests for saving attendance). The frontend will use React.js for smooth and fast user interaction. It will work on Linux servers and be compatible with all major web browsers.
+\subsubsection{Communications Interfaces}
+The system shall always use secure HTTPS for all connections. It will communicate using REST APIs with JSON data format. Emails will be sent via SMTP. The system will work over the university's normal internet or any Wi-Fi connection.
+\subsection{Attendance Management Module}
+This module ensures accurate tracking of student presence, integrating biometrics for automation. It includes workflows for leaves and reports to support warden decision-making.
+\subsubsection{Functional Requirements}
+\paragraph{ATT-REQ-001: Biometric Data Import}
+The system shall automatically import attendance records from biometric devices every hour between 6:00 PM and 11:59 PM daily, validating data for duplicates and logging errors.\\
+Description: This feature pulls data via API, maps fingerprints to student IDs, and updates the database.
+\paragraph{ATT-REQ-002: Manual Attendance Entry}
+The system shall allow wardens and assistant wardens to manually mark attendance for students when biometric systems are unavailable.\\
+Description: UI form with student search, date selection, and confirmation.
+\paragraph{ATT-REQ-003: Attendance Deadline}
+The system shall consider all students who have not marked attendance by 10:00 PM as absent for that day, triggering automated processes.\\
+Description: Cron job runs at deadline to flag absentees.
+\paragraph{ATT-REQ-004: Absentee Identification}
+The system shall automatically generate a list of absent students at 10:01 PM each day, excluding students with approved leave applications, and sort by room/floor.\\
+Description: Query database for unmarked records.
+\paragraph{ATT-REQ-005: Absentee Notification}
+The system shall send automated notifications to wardens and assistant wardens within 5 minutes of generating the absentee list, including list attachments.\\
+Description: Email with links to dashboard.
+\paragraph{ATT-REQ-006: Leave Request Submission}
+The system shall allow students to submit leave requests at least 24 hours in advance, specifying departure date, return date, reason, and optional attachments (max 5MB).\\
+Description: Form validation for dates, reason length.
+\paragraph{ATT-REQ-007: Leave Request Approval Workflow}
+The system shall route leave requests through a two-level approval process: first to assistant warden, then to warden, with email notifications at each step.\\
+Description: State machine for status (pending, approved1, approved2).
+\paragraph{ATT-REQ-008: Emergency Leave Request}
+The system shall provide a mechanism for emergency leave requests that require only warden approval and can be submitted with less than 24 hours notice, flagged as high priority.\\
+Description: Separate form with urgency field.
+\paragraph{ATT-REQ-009: Leave Status Notification}
+The system shall notify students via email within 5 minutes when their leave request status changes (approved, rejected, or pending), including reasons for rejection.\\
+Description: Webhooks for real-time updates.
+\paragraph{ATT-REQ-010: Attendance History Viewing}
+The system shall allow students to view their own attendance history for the current semester and previous semesters, with filters and export options.\\
+Description: Paginated table with dates, status.
+\paragraph{ATT-REQ-011: Attendance Report Generation}
+The system shall allow wardens to generate attendance reports filtered by date range, hostel wing, floor, room number, or individual student, in PDF/CSV format.\\
+Description: Custom queries with aggregation.
+\paragraph{ATT-REQ-012: Attendance Statistics Dashboard}
+The system shall display real-time attendance statistics including total present, total absent, leave count, and attendance percentage on the warden dashboard, with charts.\\
+Description: Live updates via WebSockets.
+\paragraph{ATT-REQ-013: Repeated Absence Alerts}
+The system shall automatically flag students who have been absent for 3 or more consecutive days without approved leave and send alerts to the warden, with student details.\\
+Description: Daily check job.
+\paragraph{ATT-REQ-014: Attendance Data Retention}
+The system shall retain attendance records for a minimum of 5 years for historical reference and compliance purposes, with archiving for old data.\\
+Description: Database partitioning.
+\paragraph{ATT-REQ-015: Bulk Attendance Import}
+The system shall support bulk import of attendance data from CSV or Excel files for migration or backup restoration purposes, with validation.\\
+Description: Admin-only feature.
+\paragraph{ATT-REQ-016: Attendance Correction}
+The system shall allow wardens to correct attendance records within 48 hours, requiring justification and audit logging.\\
+Description: Edit form with history.
+\paragraph{ATT-REQ-017: Integration with University Calendar}
+The system shall integrate with university holidays to adjust attendance expectations automatically.\\
+Description: API pull for dates.
+\paragraph{ATT-REQ-018: Student Attendance Reminders}
+The system shall send reminders to students at 9:00 PM if attendance is not marked.\\
+Description: Scheduled notifications.
+\paragraph{ATT-REQ-019: Export Attendance Data}
+The system shall allow export of attendance data for external analysis.\\
+Description: Multiple formats.
+\paragraph{ATT-REQ-020: Attendance Audit Logs}
+The system shall maintain logs of all attendance changes for security.\\
+Description: Immutable records.
+\subsubsection{Performance Requirements}
+\paragraph{ATT-PERF-001}
+The system shall process biometric imports for 1000 students within 1 minute.
+\paragraph{ATT-PERF-002}
+Absentee generation shall complete within 10 seconds for 500 students.
+\paragraph{ATT-PERF-003}
+Reports shall generate within 10 seconds for 1 month data.
+\paragraph{ATT-PERF-004}
+Dashboard updates shall occur in real-time (<2 seconds lag).
+\paragraph{ATT-PERF-005}
+Notifications shall send within 30 seconds of trigger.
+\subsection{Biometric Entry and Exit Tracking Module}
+This module provides secure, real-time tracking of student entry and exit using biometrics and online applications, with approval for restricted times and automated alerts for security.
+\subsubsection{Functional Requirements}
+\paragraph{BEET-REQ-001: Entry/Exit Request Submission}
+The system shall allow students to submit entry/exit requests specifying destination, purpose, departure time, expected return time, and contact details.\\
+Description: Form with date pickers, validation for return departure.
+\paragraph{BEET-REQ-002: Supporting Document Upload}
+The system shall allow students to upload supporting documents (e.g., invitation letters, medical prescriptions) in PDF or image format, with maximum file size of 5MB per document, and virus scanning.\\
+Description: Cloud storage integration.
+\paragraph{BEET-REQ-003: Entry/Exit Approval Workflow}
+The system shall route entry/exit requests first to the assistant warden for initial approval, then to the warden for final approval.\\
+Description: Email links for approval.
+\paragraph{BEET-REQ-004: Entry/Exit Rejection}
+The system shall allow wardens and assistant wardens to reject entry/exit requests with mandatory reason entry explaining the rejection, and optional comments.\\
+Description: Dropdown for common reasons.
+\paragraph{BEET-REQ-005: Emergency Entry/Exit Request}
+The system shall provide an emergency entry/exit option that is routed directly to the warden and marked with high priority for immediate attention, with phone call option.\\
+Description: Red-flagged in dashboard.
+\paragraph{BEET-REQ-006: Entry/Exit Expiry}
+The system shall automatically expire approved requests 1 hour after the specified return time and flag the student as overdue, updating status.\\
+Description: Job for expiry check.
+\paragraph{BEET-REQ-007: Entry/Exit Verification}
+The system shall provide security personnel with a verification interface that validates requests using QR codes or request ID numbers, showing student photo.\\
+Description: Mobile app or web for gates.
+\paragraph{BEET-REQ-008: Exit Activation}
+The system shall activate an approved request only when the student physically exits through the gate and security personnel scan or enter the request ID, recording exit time.\\
+Description: Geo-location optional.
+\paragraph{BEET-REQ-009: Return Time Recording}
+The system shall record the actual return time when security personnel verify the student's return using the request ID, calculating duration.\\
+Description: Auto-alert if late.
+\paragraph{BEET-REQ-010: Overdue Alerts}
+The system shall send automated alerts to wardens when students exceed their approved return time by more than 1 hour.\\
+Description: Multi-channel alerts.
+\paragraph{BEET-REQ-011: Entry/Exit History}
+The system shall maintain a complete history of all entry/exit requests issued to each student.\\
+Description: Filtered views.
+\paragraph{BEET-REQ-012: Bulk Requests for Events}
+The system shall allow wardens to create bulk entry/exit requests for university-organized events, specifying event name, date, and list of participating students from CSV.\\
+Description: Group approval.
+\paragraph{BEET-REQ-013: Request Cancellation}
+The system shall allow students to cancel pending entry/exit requests and wardens to revoke approved but unused requests, with notifications.\\
+Description: Status update.
+\paragraph{BEET-REQ-014: Entry/Exit Statistics}
+The system shall generate statistics showing total requests issued, average processing time, rejection rate, and overdue rate for administrative review, with charts.\\
+Description: Monthly reports.
+\paragraph{BEET-REQ-015: Concurrent Request Limit}
+The system shall enforce a maximum of 3 pending entry/exit requests per student at any given time.\\
+Description: Check on submission.
+\paragraph{BEET-REQ-016: Extension Request}
+The system shall allow students to request extensions for active requests, send for approval.\\
+Description: Limited to once per request.
+\paragraph{BEET-REQ-017: Integration with Attendance}
+The system shall link approved entry/exit requests to attendance, marking as on-leave if approved.\\
+Description: Auto-sync.
+\paragraph{BEET-REQ-018: QR Code Generation}
+The system shall generate secure QR codes for approved requests, printable or mobile-displayable.\\
+Description: Secure encoding.
+\paragraph{BEET-REQ-019: Verification Logs}
+The system shall log all verifications for audit.\\
+Description: Timestamped.
+\paragraph{BEET-REQ-020: Custom Request Types}
+The system shall support different request types (e.g., medical, family), with specific workflows.\\
+Description: Configurable.
+\subsubsection{Performance Requirements}
+\paragraph{BEET-PERF-001}
+Verification shall complete within 2 seconds.
+\paragraph{BEET-PERF-002}
+Notifications within 1 minute.
+\paragraph{BEET-PERF-003}
+Form load within 3 seconds.
+\paragraph{BEET-PERF-004}
+Statistics generation within 10 seconds.
+\paragraph{BEET-PERF-005}
+Bulk processing for 100 students within 1 minute.
+\subsection{Room Management Module}
+Manages accommodations with automation for efficiency and maintenance.
+\subsubsection{Functional Requirements}
+\paragraph{RM-REQ-001: Room Database}
+The system shall maintain a database of all hostel rooms containing room number, wing, capacity, current occupancy, amenities list, and status (available, maintenance).\\
+Description: Admin editable.
+\paragraph{RM-REQ-002: Automatic Room Allocation}
+The system shall automatically suggest available rooms for new students based on gender, program, room capacity, and preferences (e.g., floor), prioritizing vacancy.\\
+Description: Algorithm for matching.
+\paragraph{RM-REQ-003: Manual Room Assignment}
+The system shall allow wardens to manually override automatic suggestions and assign students to specific rooms, with conflict checks.\\
+Description: Drag-drop UI optional.
+\paragraph{RM-REQ-004: Room Capacity Enforcement}
+The system shall prevent allocation of students to rooms that have reached their maximum capacity, displaying errors.\\
+Description: Real-time check.
+\paragraph{RM-REQ-005: Room Transfer Request}
+The system shall allow students to request room transfers, specifying reasons, preferred destination, and roommate consents if needed.\\
+Description: Form with approvals.
+\paragraph{RM-REQ-006: Room Transfer Approval}
+The system shall route room transfer requests to the warden for approval and require confirmation from both current and destination roommates via email links.\\
+Description: Workflow tracking.
+\paragraph{RM-REQ-007: Vacancy Display}
+The system shall display real-time vacancy information showing available rooms, partially occupied rooms, and fully occupied rooms organized by floor, wing.\\
+Description: Interactive dashboard.
+\paragraph{RM-REQ-008: Room Clearance Initiation}
+The system shall allow students to initiate room clearance requests when preparing to vacate, specifying expected checkout date and inventory list.\\
+Description: Checklist form.
+\paragraph{RM-REQ-009: Room Inspection Scheduling}
+The system shall allow assistant wardens to schedule room inspection appointments with students requesting clearance, integrating with calendars.\\
+Description: Availability slots.
+\paragraph{RM-REQ-010: Room Condition Documentation}
+The system shall provide a checklist interface for documenting room condition during inspection including furniture status, cleanliness, damages, with photo uploads.\\
+Description: Mobile-friendly.
+\paragraph{RM-REQ-011: Clearance Approval}
+The system shall allow wardens to issue final clearance approval after reviewing inspection reports and confirming no outstanding issues or dues.\\
+Description: Digital signature optional.
+\paragraph{RM-REQ-012: Maintenance Request Submission}
+The system shall allow students to submit maintenance requests for their rooms, specifying issue type and optional photo attachments (max 5MB).\\
+Description: Categorized (plumbing, electrical, etc).
+\paragraph{RM-REQ-013: Maintenance Request Tracking}
+The system shall track maintenance requests through statuses: Submitted, Acknowledged, In Progress, Completed, and allow students/wardens to view current status and history.\\
+Description: Notifications on updates.
+\paragraph{RM-REQ-014: Room Occupancy Reports}
+The system shall generate occupancy reports showing utilization rates by floor, wing, overall hostel, with trends over time for planning.\\
+Description: Graphical reports.
+\paragraph{RM-REQ-015: Roommate Information}
+The system shall display roommate names, contact information, and profiles to occupants of shared rooms for communication, with privacy controls.\\
+Description: Consent-based sharing.
+\paragraph{RM-REQ-016: Room Amenity Management}
+The system shall allow admins to update room amenities and reflect in allocation suggestions.\\
+Description: Database fields.
+\paragraph{RM-REQ-017: Bulk Allocation for New Semester}
+The system shall support bulk room allocations for incoming students from lists.\\
+Description: Import feature.
+\paragraph{RM-REQ-018: Room History Logs}
+The system shall log all allocations, transfers for audit.\\
+Description: Searchable.
+\paragraph{RM-REQ-019: Preference Matching}
+The system shall match rooms based on student preferences (e.g., quiet floor).\\
+Description: Custom fields.
+\paragraph{RM-REQ-020: Integration with Student DB}
+The system shall sync room data with university student records.\\
+Description: Auto-updates.
+\subsubsection{Performance Requirements}
+\paragraph{RM-PERF-001}
+Vacancy updates within 5 seconds.
+\paragraph{RM-PERF-002}
+Reports within 10 seconds.
+\paragraph{RM-PERF-003}
+Allocation suggestions within 3 seconds.
+\paragraph{RM-PERF-004}
+Maintenance tracking loads in 2 seconds.
+\paragraph{RM-PERF-005}
+Bulk operations for 200 students within 2 minutes.
+\subsection{Complaint Management Module}
+Handles complaint tracking for quality improvement.
+\subsubsection{Functional Requirements}
+\paragraph{COMP-REQ-001: Complaint Submission}
+The system shall allow students to submit complaints selecting type (general, maintenance, etc), description, and rating (1-5 stars).\\
+Description: Anonymous option.
+\paragraph{COMP-REQ-002: Complaint Photo Attachment}
+The system shall allow students to attach up to 3 photos with each complaint for evidence, max 5MB per photo, with compression.\\
+Description: Storage optimization.
+\paragraph{COMP-REQ-003: Complaint Acknowledgment}
+The system shall automatically acknowledge complaint receipt and assign a unique tracking number within 1 minute of submission, emailing confirmation.\\
+Description: Auto-response.
+\paragraph{COMP-REQ-004: Complaint Assignment}
+The system shall route complaints to appropriate staff based on type.\\
+Description: Assignment rules.
+\paragraph{COMP-REQ-005: Complaint Status Updates}
+The system shall allow staff to update status (Received, Under Review, Resolved, Closed) with comments and evidence.\\
+Description: History log.
+\paragraph{COMP-REQ-006: Complaint Resolution Notification}
+The system shall notify students when complaints are resolved or closed with details of actions taken and satisfaction survey link.\\
+Description: Feedback loop.
+\paragraph{COMP-REQ-007: Complaint Reports}
+The system shall generate reports on complaints, with filters and exports.\\
+Description: Analytics.
+\subsubsection{Performance Requirements}
+\paragraph{COMP-PERF-001}
+Complaint ack within 60 seconds.
+\paragraph{COMP-PERF-002}
+Reports within 15 seconds.
+\paragraph{COMP-PERF-003}
+Notifications within 30 seconds.
+\subsection{Day Scholar Tracking Module}
+Ensures secure access control with logging and alerts.
+\subsubsection{Functional Requirements}
+\paragraph{DS-REQ-001: Day Scholar Entry Logging}
+The system shall allow security to log day scholar entries by Biometric, recording time, purpose, visited resident.\\
+Description: Quick form.
+\paragraph{DS-REQ-002: Day Scholar Registration}
+The system shall capture day scholar details: name, contact, address, relationship, purpose, ID upload.\\
+Description: Form with validation.
+\paragraph{DS-REQ-003: Approval Workflow}
+The system shall route requests for approval if required, with instant for low-risk.\\
+Description: Configurable rules.
+\paragraph{DS-REQ-004: Entry Verification}
+The system shall generate entry with Biometric for verification.\\
+Description: Scan-based.
+\paragraph{DS-REQ-005: Time-Limit Enforcement}
+The system shall enforce time limits, flag overdues.\\
+Description: Timer job.
+\paragraph{DS-REQ-006: Exit Logging}
+The system shall log exits using Biometric, calculate duration.\\
+Description: Auto-close.
+\paragraph{DS-REQ-007: Unauthorized Entry Alert}
+The system shall alert on unauthorized attempts in real-time.\\
+Description: Siren integration optional.
+\paragraph{DS-REQ-008: Pre-Approved Requests}
+The system shall allow pre-approvals for recurring visits.\\
+Description: Schedule-based.
+\paragraph{DS-REQ-009: History Viewing}
+The system shall show history for students/wardens.\\
+Description: Filtered.
+\paragraph{DS-REQ-010: Overdue Notifications}
+The system shall notify after 15 minutes overdue.\\
+Description: Multi-user.
+\paragraph{DS-REQ-011: Blacklist Management}
+The system shall maintain blacklists, block entries.\\
+Description: Admin editable.
+\paragraph{DS-REQ-012: Statistics Dashboard}
+The system shall display stats: visits, durations, peaks.\\
+Description: Charts.
+\paragraph{DS-REQ-013: Reports Generation}
+The system shall generate filtered reports.\\
+Description: Exports.
+\paragraph{DS-REQ-014: Emergency Contact Linkage}
+The system shall link to student emergencies.\\
+Description: Quick access.
+\paragraph{DS-REQ-015: Offline Entry Support}
+The system shall support offline logging, sync later.\\
+Description: Local storage.
+\paragraph{DS-REQ-016: Photo Capture}
+The system shall capture photos at entry.\\
+Description: Webcam integration.
+\paragraph{DS-REQ-017: Group Support}
+The system shall handle groups.\\
+Description: Linked records.
+\paragraph{DS-REQ-018: Purpose Categories}
+The system shall categorize purposes for reporting.\\
+Description: Dropdowns.
+\subsubsection{Performance Requirements}
+\paragraph{DS-PERF-001}
+Logging within 3 seconds.
+\paragraph{DS-PERF-002}
+Alerts within 10 seconds.
+\paragraph{DS-PERF-003}
+Reports within 15 seconds for 6 months.
+\paragraph{DS-PERF-004}
+Offline sync within 1 minute online.
+\paragraph{DS-PERF-005}
+Dashboard load within 5 seconds.
+
+\section{Other Non-Functional Requirements}
+\subsection{Security Requirements}
+
+The following security requirements ensure that the Smart Hostel Management System remains safe and protects all user data:
+
+\begin{itemize}
+
+    \item \textbf{SEC-REQ-001:} The system shall restrict access based on user roles so that each user can only view or use the features allowed for their position.
+
+    \item \textbf{SEC-REQ-002:} The system shall protect all user accounts with secure login and strong password rules to prevent unauthorized access.
+
+    \item \textbf{SEC-REQ-003:} The system shall encrypt sensitive information, including student records, attendance data, and entry or exit tracking, both during storage and transmission.
+
+    \item \textbf{SEC-REQ-004:} The system shall maintain logs of important actions, such as approvals or data updates, to help track suspicious or incorrect behavior.
+
+    \item \textbf{SEC-REQ-005:} The system shall include protections against common security threats such as brute-force attacks, unauthorized page access, and harmful code injections.
+
+\end{itemize}
+
+\subsection{Reliability Requirements}
+
+The following reliability requirements ensure that the Smart Hostel Management System performs consistently and remains dependable during everyday use:
+
+\begin{itemize}
+
+    \item \textbf{REL-REQ-001:} The system shall remain available and fully operational during standard hostel hours (6:00 AM to 11:00 PM) with an uptime target of 99\%.
+
+    \item \textbf{REL-REQ-002:} The system shall recover from unexpected server failures within a few minutes without losing any previously saved or committed data.
+
+    \item \textbf{REL-REQ-003:} The system shall handle high user load smoothly, ensuring stable performance even when many students or staff use the system at the same time.
+
+    \item \textbf{REL-REQ-004:} The system shall safely store user actions such as attendance updates so that no data is lost during temporary network interruption.
+
+    \item \textbf{REL-REQ-005:} The system shall automatically create regular data backups to ensure that information can be restored in case of technical failure.
+
+    \item \textbf{REL-REQ-006:} The system shall operate reliably across multiple device types (mobile, desktop, tablet) without unexpected crashes or errors.
+
+\end{itemize}
+
+\subsection{Usability Requirements}
+
+The following usability requirements ensure that the Smart Hostel Management System is simple, comfortable, and easy for all types of users:
+
+\begin{itemize}
+    
+    \item \textbf{USA-REQ-001:} The system shall support both English and Urdu languages so users can choose the language they are most comfortable with.
+    
+    \item \textbf{USA-REQ-002:} The system shall allow new users to perform basic tasks, such as submitting attendence, without requiring prior training.
+    
+    \item \textbf{USA-REQ-003:} The system shall provide tooltips and help icons on detailed or complex features to guide users when needed.
+    
+    \item \textbf{USA-REQ-004:} The system shall display error messages in simple, user-friendly language along with suggestions on how to fix the issue.
+    
+    \item \textbf{USA-REQ-005:} The system shall maintain a consistent color scheme, layout, and visual design across all pages to avoid user confusion.
+    
+    \item \textbf{USA-REQ-006:} The system shall clearly highlight important actions such as “Submit,” “Save,” and “Approve” to help users complete tasks easily.
+    
+\end{itemize}
+
+\subsection{Supportability Requirements}
+
+The following supportability requirements ensure that the Smart Hostel Management System can be easily maintained, updated, and supported after deployment:
+
+\begin{itemize}
+    \item \textbf{SUP-REQ-001:} The system shall be easy to update so that new features or fixes can be added without affecting other modules.
+    
+    \item \textbf{SUP-REQ-002:} The system shall include clear documentation that explains how each part of the system works and how it can be maintained.
+    
+    \item \textbf{SUP-REQ-003:} The system shall provide helpful error messages and maintain proper logs to assist technical staff in troubleshooting issues quickly.
+    
+    \item \textbf{SUP-REQ-004:} The system shall be designed in a modular structure so different modules (attendance, gate pass, rooms, etc.) can be maintained separately.
+    
+    \item \textbf{SUP-REQ-005:} The system shall support regular data backups to ensure easy recovery of important information if any failure occurs.
+    
+    \item \textbf{SUP-REQ-006:} The system shall be designed to support future improvements and upgrades with minimal changes.
+\end{itemize}
+
+\subsection{Portability Requirements}
+
+The portability requirements ensure that the Smart Hostel Management System can run easily across different devices, browsers, and hosting environments. The system should remain usable even if the university changes its technical setup in the future.
+
+\begin{itemize}
+    \item \textbf{PORT-REQ-001:} The system shall run smoothly on all major web browsers including Chrome, Firefox, Edge, and Safari without requiring special configurations.
+    
+    \item \textbf{PORT-REQ-002:} The system shall be usable on multiple device types such as desktops, laptops, tablets, and smartphones with consistent functionality.
+    
+    \item \textbf{PORT-REQ-003:} The system shall be operating-system independent and function properly on Windows, macOS, and Linux platforms.
+    
+    \item \textbf{PORT-REQ-004:} The system shall be easily transferable to another server or hosting environment if required by the university.
+    
+    \item \textbf{PORT-REQ-005:} The system shall support cloud-based deployment on platforms like AWS, Azure, or any university-approved cloud service.
+    
+    \item \textbf{PORT-REQ-006:} The system shall use standard web technologies so that future updates or migrations can be performed without major code modifications.
+\end{itemize}
+
+\subsection{Maintainability Requirements}
+
+The maintainability of the Smart Hostel Management System is important to ensure that the system can be updated, improved, and fixed easily over time. The following non-functional requirements define how maintainability will be supported:
+
+\begin{itemize}
+    \item \textbf{MAIN-REQ-001:} The system shall be developed using a modular structure so that each major feature (attendance, Biometric Tracking system, room management, complaints) can be maintained independently.
+    
+    \item \textbf{MAIN-REQ-002:} The system shall be designed in a way that allows new features or policy changes to be added with minimal changes to the existing code.
+    
+    \item \textbf{MAIN-REQ-003:} The system shall include clear and simple documentation that explains modules, workflows, and important functions to help future developers maintain the system easily.
+    
+    \item \textbf{MAIN-REQ-004:} The code-base shall follow consistent naming conventions and folder structures so developers can quickly locate and update required sections.
+    
+    \item \textbf{MAIN-REQ-005:} The system shall maintain readable logs and organized error messages to support quick debugging and problem resolution.
+    
+    \item \textbf{MAIN-REQ-006:} The system shall store adjustable settings (such as attendance deadlines, visiting hours) in configuration files instead of hard-coded values.
+    
+    \item \textbf{MAIN-REQ-007:} The database design shall be flexible enough to allow the addition of new fields, tables, or relationships as hostel needs grow over time.
+    
+    \item \textbf{MAIN-REQ-008:} The system shall support maintenance operations with minimal downtime to ensure that updates or fixes do not disturb daily hostel activities.
+\end{itemize}
+
+\section{Meeting Minutes}
+
+This appendix contains records of all meetings held with the Requirement Provider (Ms. Nida Sultan Nahra) throughout the requirements gathering and validation process.
+
+\subsection{Meeting 1: Initial Requirements Discussion}
+
+\textbf{Date:} December 12, 2025\\
+\textbf{Time:} 2:00 PM - 3:30 PM\\
+\textbf{Location:} Namal University, Mianwali\\
+\textbf{Attendees:}
+\begin{itemize}
+    \item Ms. Nida Sultan Nahra (Requirement Provider - Hostel Warden)
+    \item Muhammad Ahmad (Team Lead)
+    \item Asad Ullah Khan (Team Member)
+    \item Maryam Rashid (Team Member)
+\end{itemize}
+
+\textbf{Agenda:}
+\begin{enumerate}
+    \item Introduction and project overview
+    \item Discussion of current hostel management challenges
+    \item Identification of key stakeholders
+    \item Initial requirements gathering
+\end{enumerate}
+
+\textbf{Discussion Summary:}
+
+Ms. Nida Sultan Nahra outlined the major pain points in current hostel operations:
+\begin{itemize}
+    \item Manual attendance verification is time-consuming and error-prone
+    \item Paper-based gate slip system lacks traceability and security
+    \item Room allocation is managed through spreadsheets leading to conflicts
+    \item No centralized student database for hostel-specific information
+\end{itemize}
+
+Key functional requirements identified:
+\begin{itemize}
+    \item Automated attendance tracking integrated with biometric devices
+    \item Online application method before exiting hostel/university
+    \item Comprehensive room management module
+    \item Day scholar tracking for security purposes
+\end{itemize}
+
+\textbf{Next Meeting:} November 20, 2025
+
+\subsection{Meeting 2: Requirements Refinement and Validation}
+
+\textbf{Date:} December 23, 2025\\
+\textbf{Time:} 3:00 PM - 5:00 PM\\
+\textbf{Location:} Online meeting through Zoom\\
+\textbf{Attendees:}
+\begin{itemize}
+    \item Ms. Nida Sultan Nahra (Requirement Provider)
+    \item Muhammad Ahmad (Team Lead)
+    \item Asad Ullah Khan (Team Member)
+    \item Maryam Rashid (Team Member)
+\end{itemize}
+
+\textbf{Agenda:}
+\begin{enumerate}
+    \item Review of information provided by RP
+    \item Detailed discussion of each functional module
+    \item Clarification of user roles and permissions
+    \item Discussion of integration requirements
+    \item Validation of non-functional requirements
+\end{enumerate}
+
+\textbf{Discussion Summary:}
+
+\textbf{Attendance Management:}
+\begin{itemize}
+    \item Biometric devices will be used
+    \item Attendance window: 6:00 PM to 10:00 PM daily
+    \item Absent student list must be generated by 10:05 PM
+    \item Manual override needed for biometric failures
+\end{itemize}
+
+\textbf{Gate Exit System:}
+\begin{itemize}
+    \item Current paper forms include: student details, destination, departure/return times, parent contact
+    \item Average approval time: 2-4 hours currently
+    \item Security checkpoint verification is manual, needs digital system solution
+    \item Online short application and Biometric will be used to exit gate
+\end{itemize}
+
+\textbf{Room Management:}
+\begin{itemize}
+    \item Total rooms: approximately 50 with capacities 2,4,8
+    \item Group wise allocation with mutual agreement
+    \item Room change requests handled case-by-case, need systematic workflow with vacancy viewing
+    \item Clearance process (student absent for consecutive 6 months will be automatically removed from room allocation)
+\end{itemize}
+
+\textbf{Day Scholar Tracking:}
+\begin{itemize}
+    \item Approximately 50-80 day scholars visit daily
+    \item Entry/exit must be logged for security
+    \item Warden notification needed when day scholars enter
+\end{itemize}
+
+\textbf{Non-Functional Requirements Validation:}
+\begin{itemize}
+    \item System must support 100+ concurrent users
+    \item Response time: under 3 seconds for most operations
+    \item Data backup: daily automated backups essential
+    \item Security: strict role-based access control required
+    \item Mobile responsiveness: critical as most students use smartphones
+\end{itemize}
+
+\textbf{Clarifications:}
+\begin{itemize}
+    \item Integration with university student information system is read-only
+    \item SMS notifications limited to critical events due to cost
+    \item Email notifications preferred for routine communications
+\end{itemize}
+
+\newpage
+\appendix
+
+\section{Use Case Diagram}
+\label{app:use-case}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{use_case_diagram.png}
+\caption{Use Case Diagram for SHMS}
+\end{figure}
+
+\newpage
+
+\section{Context Diagram}
+\label{app:context}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{context_diagram.png}
+\caption{Context Diagram for SHMS}
+\end{figure}
+
+\end{document}
