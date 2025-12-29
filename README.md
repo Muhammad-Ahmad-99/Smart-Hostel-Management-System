@@ -90,7 +90,7 @@ Our project focuses to create a centralized system that improves efficiency, acc
 
 ## 📁 Repository Structure
 
-- `Meeting Minutes/` – Google Sheet exports  
+- `Meeting_Minutes/` – Google Sheet exports  
 - `Meeting_ImagesVideos/` – Recorded sessions  
 - `Project_Proposal/` – Proposal files  
 - `Documentation/` – Notes
