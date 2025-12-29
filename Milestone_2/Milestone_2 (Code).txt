@@ -531,7 +531,7 @@ Description: Cloud storage integration.
 The system shall route entry/exit requests first to the assistant warden for initial approval, then to the warden for final approval.\\
 Description: Email links for approval.
 \paragraph{BEET-REQ-004: Entry/Exit Rejection}
-The system shall allow wardens and assistant wardens to reject entry/exit requests with mandatory reason entry explaining the rejection, and optional comments.\\
+The system shall allow wardens and assistant wardens to reject exit requests with (optional) reason explaining the rejection, and optional comments.\\
 Description: Dropdown for common reasons.
 \paragraph{BEET-REQ-005: Emergency Entry/Exit Request}
 The system shall provide an emergency entry/exit option that is routed directly to the warden and marked with high priority for immediate attention, with phone call option.\\
@@ -540,7 +540,7 @@ Description: Red-flagged in dashboard.
 The system shall automatically expire approved requests 1 hour after the specified return time and flag the student as overdue, updating status.\\
 Description: Job for expiry check.
 \paragraph{BEET-REQ-007: Entry/Exit Verification}
-The system shall provide security personnel with a verification interface that validates requests using QR codes or request ID numbers, showing student photo.\\
+The system shall provide security personnel with a verification interface that validates requests using biometric, showing student info.\\
 Description: Mobile app or web for gates.
 \paragraph{BEET-REQ-008: Exit Activation}
 The system shall activate an approved request only when the student physically exits through the gate and security personnel scan or enter the request ID, recording exit time.\\
@@ -558,7 +558,7 @@ Description: Filtered views.
 The system shall allow wardens to create bulk entry/exit requests for university-organized events, specifying event name, date, and list of participating students from CSV.\\
 Description: Group approval.
 \paragraph{BEET-REQ-013: Request Cancellation}
-The system shall allow students to cancel pending entry/exit requests and wardens to revoke approved but unused requests, with notifications.\\
+The system shall allow students to cancel pending one_2exit requests and wardens to revoke approved but unused requests, with notifications.\\
 Description: Status update.
 \paragraph{BEET-REQ-014: Entry/Exit Statistics}
 The system shall generate statistics showing total requests issued, average processing time, rejection rate, and overdue rate for administrative review, with charts.\\
@@ -926,7 +926,7 @@ Key functional requirements identified:
     \item Day scholar tracking for security purposes
 \end{itemize}
 
-\textbf{Next Meeting:} November 20, 2025
+\textbf{Next Meeting:} December 23, 2025
 
 \subsection{Meeting 2: Requirements Refinement and Validation}
 
