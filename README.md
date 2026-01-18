@@ -89,13 +89,3 @@ Our project focuses to create a centralized system that improves efficiency, acc
 | Testing & Feedback | 3 months | User Testing Report |
 | Final Deployment | 2 months | Final Demo & Documentation |
 
----
-
-## 📁 Repository Structure
-
-- `Meeting_Minutes/` – Google Sheet exports  
-- `Meeting_ImagesVideos/` – Recorded sessions  
-- `Project_Proposal/` – Proposal files  
-- `Documentation/` – Notes
-- `src/` – Source code  
-- `README.md` – Project summary
