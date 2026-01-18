@@ -4,6 +4,7 @@
 *Course: Software Engineering | Semester Project*
 
 - Google Sheet Link: https://docs.google.com/spreadsheets/d/19YDsyAdm93ZzYEPhOQ8Ynl13ZxgnjzLOFdT513q0DzY/edit?usp=sharing
+- Linkedin Post Link: https://www.linkedin.com/posts/muhammad-ahmad-51522a332_softwareengineering-teamproject-systemdesign-activity-7418640340586319872-zTd1?utm_source=share&utm_medium=member_android&rcm=ACoAAFOu4GEBORO5cnQL2bWrA0aum3upulbPb3M
 ---
 
 ## 📘 Project Overview
