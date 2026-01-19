@@ -8,7 +8,7 @@
 # Desktop Prototype
 - Figma Link: https://www.figma.com/design/NShhDD17HBESNAPUMK2dFZ/Untitled?node-id=0-1&t=dsS4OdtozuPHHvJ9-1
 - Figma Lnk: https://www.figma.com/proto/NShhDD17HBESNAPUMK2dFZ/Untitled?node-id=59-7&t=dsS4OdtozuPHHvJ9-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=59%3A81
-# Android Desktop
+# Android Prototype
 - https://www.figma.com/design/hlz7vYwG3SDnBhdV1urny1/Untitled?node-id=0-1&p=f&t=CijofO0ZqVsER2wG-0
 - https://www.figma.com/proto/hlz7vYwG3SDnBhdV1urny1/Untitled?node-id=3-1099&t=CijofO0ZqVsER2wG-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=5%3A1346&show-proto-sidebar=1
 ---
