@@ -1,0 +1,1279 @@
+% Packages
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{parskip}
+\usepackage{tocloft}
+\usepackage{caption}
+
+% Fix list alignment and spacing
+\setlist[itemize]{leftmargin=*,labelsep=0.5em,itemsep=0.3em,topsep=0.5em}
+\setlist[enumerate]{leftmargin=*,labelsep=0.5em,itemsep=0.3em,topsep=0.5em}
+\setlist[description]{leftmargin=2em,labelindent=0em,itemsep=0.3em,topsep=0.5em}
+
+% Header and Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{SHMS - Milestone 3}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Title formatting
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\bfseries}{\thesubsubsection}{1em}{}
+
+% Hyperlink setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue,
+    pdftitle={Software Design Specification},
+    pdfauthor={SHMS Team}
+}
+
+% Fix figure placement
+\renewcommand{\floatpagefraction}{.8}
+
+\begin{document}
+
+% Title Page
+\begin{titlepage}
+    \centering
+    \vspace*{1.5cm}
+    
+    {\Huge\bfseries Software Design Specification\\[0.5cm]}
+    {\Large Smart Hostel Management System\\[1.5cm]}
+
+    \includegraphics[width=7cm]{download.png}\\[1cm]
+    
+    {\large Prepared for:\\[0.3cm]}
+    {\Large Ms. Nida Sultan Nahra\\}
+    {\large Hostel Warden, Namal University\\[1cm]}
+    
+    {\large Prepared by:\\[0.5cm]
+    \begin{tabular}{|@{}l|l@{}|}
+    \hline
+    \quad Muhammad Ahmad & NUM-BSCS-2024-44 \quad \quad\\
+    \hline
+    \quad Asad Ullah Khan & NUM-BSCS-2024-17 \quad \quad\\
+    \hline
+    \quad Maryam Rashid & NUM-BSCS-2024-33 \quad \quad\\
+    \hline
+    \end{tabular}
+    \\[1cm]}
+    
+    {\large Department of Computer Science\\
+    Namal University, Mianwali\\[0.5cm]}
+    
+
+\end{titlepage}
+
+
+% Table of Contents
+\tableofcontents
+\newpage
+
+% =====================================================
+% 1. INTRODUCTION
+% =====================================================
+\section{Introduction}
+
+\subsection{Purpose}
+
+This document presents the complete system design for the Smart Hostel Management System (SHMS). It translates the functional and non-functional requirements from the approved SRS into a detailed architectural and behavioral design that will guide the implementation phase.
+
+\textbf{This document is intended for:}
+
+\begin{itemize}
+\item Development team to understand system architecture and component interactions
+\item Requirement Provider (Ms. Nida Sultan Nahra) to validate design completeness
+\item Quality assurance team to create test cases based on design specifications
+\item Future maintainers to understand system structure
+\end{itemize}
+
+\subsection{Project Overview}
+
+SHMS is a web-based application designed to automate hostel operations at Namal University. The system replaces manual processes with an integrated digital platform handling:
+
+\begin{itemize}
+\item Automated biometric attendance tracking
+\item Online entry/exit application and approval workflow
+\item Room allocation and management
+\item Complaint submission and tracking
+\item Day scholar access control
+\end{itemize}
+
+\subsection{Design Approach}
+
+Our design follows these key principles:
+
+\begin{itemize}
+\item \textbf{Requirements-Driven:} Every design element traces back to SRS requirements
+\item \textbf{Modular Architecture:} Independent modules with clear interfaces
+\item \textbf{User-Centered:} Interface designs prioritize ease of use
+\item \textbf{Iterative Validation:} Design validated through prototyping and stakeholder feedback
+\end{itemize}
+
+\subsection{Document Organization}
+
+\begin{itemize}
+\item Section 2: Design assumptions and constraints
+\item Section 3: Key architectural decisions
+\item Section 4: System design diagrams (UML models)
+\item Section 5: Requirements-design traceability
+\item Section 6: Figma prototype and validation
+\item Section 7: Meeting documentation
+\item Section 8: Conclusion and next steps
+\end{itemize}
+
+% =====================================================
+% 2. DESIGN ASSUMPTIONS AND CONSTRAINTS
+% =====================================================
+\section{Design Assumptions and Constraints}
+
+\subsection{Design Assumptions}
+
+\subsubsection{Infrastructure Assumptions}
+
+\begin{itemize}
+\item University network provides stable connectivity (99\% uptime during 6 AM - 11 PM)
+\item Server infrastructure available (on-premises or cloud: 8GB RAM, 4-core CPU, 100GB storage)
+\item Biometric devices support API integration
+\item Students have access to modern web browsers on smartphones/computers
+\end{itemize}
+
+\subsubsection{User Assumptions}
+
+\begin{itemize}
+\item Students possess basic smartphone usage skills
+\item Staff will receive system training before deployment
+\item Users will actively adopt the digital system
+\item All students have enrolled fingerprints in biometric system
+\end{itemize}
+
+\subsubsection{Data and Integration Assumptions}
+
+\begin{itemize}
+\item University provides API access to student information system
+\item Student data from university is accurate and updated
+\item Email server (SMTP) access available
+\item Budget allocated for critical SMS notifications
+\end{itemize}
+
+\subsection{Design Constraints}
+
+\subsubsection{Technical Constraints}
+
+\begin{itemize}
+\item Technology stack: React.js (frontend), Node.js/Express (backend), MongoDB (database)
+\item Must support all major browsers without browser-specific code
+\item Fully responsive design (320px to 1920px screen width)
+\item Limited by existing biometric device API capabilities
+\end{itemize}
+
+\subsubsection{Performance Constraints}
+
+\begin{itemize}
+\item All user interactions must complete within 3 seconds
+\item System must handle 100+ concurrent users
+\item Biometric import must complete hourly (6 PM - 11:59 PM)
+\item Reports must generate within 15 seconds
+\item Dashboard updates must reflect within 2 seconds
+\end{itemize}
+
+\subsubsection{Security Constraints}
+
+\begin{itemize}
+\item Strict role-based access control required
+\item All sensitive operations must be logged
+\item Female hostel data requires special security measures
+\item Strong password policies must be enforced
+\end{itemize}
+
+\subsubsection{Operational Constraints}
+
+\begin{itemize}
+\item Development timeline: One academic semester (4 months)
+\item Small team: 3 developers
+\item Limited budget: Use open-source technologies
+\item System updates during non-peak hours only
+\end{itemize}
+
+% =====================================================
+% 3. KEY DESIGN DECISIONS
+% =====================================================
+\newpage
+\section{Key Design Decisions}
+
+\subsection{Architectural Decisions}
+
+\subsubsection{Three-Tier Architecture}
+
+\textbf{Decision:} Adopt a three-tier architecture separating Presentation (React.js), Business Logic (Node.js/Express), and Data (MongoDB) layers.
+
+\textbf{Justification:}
+
+\begin{itemize}
+\item Separation of concerns enables independent development and testing
+\item Supports multiple client types through shared API
+\item Facilitates maintenance by isolating changes to specific layers
+\item Aligns with team expertise and industry best practices
+\end{itemize}
+
+\subsubsection{RESTful API Design}
+
+\textbf{Decision:} Implement RESTful APIs for all client-server communication using JSON format.
+
+\textbf{Justification:}
+
+\begin{itemize}
+\item Industry-standard with extensive documentation
+\item Stateless communication simplifies scalability
+\item Enables potential future mobile app integration
+\item JSON provides lightweight, readable data exchange
+\end{itemize}
+
+\subsubsection{Modular System Design}
+
+\textbf{Decision:} Organize system into five independent modules: Attendance, Entry/Exit, Room Management, Complaint Management, Day Scholar Tracking.
+
+\textbf{Justification:}
+
+\begin{itemize}
+\item Each module addresses distinct SRS requirements
+\item Enables parallel development
+\item Facilitates testing and maintenance
+\item Reduces risk by isolating failures
+\end{itemize}
+
+\subsection{Database Design Decisions}
+
+\subsubsection{MongoDB Selection}
+
+\textbf{Decision:} Use MongoDB (NoSQL document database) over relational database.
+
+\textbf{Justification:}
+
+\begin{itemize}
+\item Flexible schema accommodates evolving requirements
+\item JSON-like documents align with JavaScript stack
+\item Horizontal scalability for future growth
+\item Team familiarity reduces learning curve
+\end{itemize}
+
+\subsubsection{Collection Design}
+
+\textbf{Decision:} Create separate collections for major entities (Students, Attendance, EntryExitApplications, Rooms, Complaints, DayScholarLogs) with embedded sub-documents for tightly coupled data.
+
+\textbf{Justification:}
+
+\begin{itemize}
+\item Separate collections enable efficient querying and indexing
+\item Embedding reduces joins for common queries
+\item Balances normalization with MongoDB best practices
+\end{itemize}
+
+\subsection{Security Design Decisions}
+
+\subsubsection{JWT Authentication}
+
+\textbf{Decision:} Implement JWT (JSON Web Token) based authentication with role information in token.
+
+\textbf{Justification:}
+
+\begin{itemize}
+\item Stateless authentication supports RESTful design
+\item Role embedding enables efficient authorization
+\item Industry-standard with mature libraries
+\item Scalable across multiple servers
+\end{itemize}
+
+\subsubsection{Role-Based Access Control}
+
+\textbf{Decision:} Implement RBAC with four roles: Student, Security, Assistant Warden, Warden. Permissions checked at both API and UI levels.
+
+\textbf{Justification:}
+
+\begin{itemize}
+\item Directly implements SRS security requirements
+\item Simple model matches organizational hierarchy
+\item Dual enforcement (API + UI) provides defense in depth
+\end{itemize}
+
+\subsection{User Interface Design Decisions}
+
+\subsubsection{Mobile-First Approach}
+
+\textbf{Decision:} Design UI with mobile devices as primary target, then adapt for larger screens.
+
+\textbf{Justification:}
+
+\begin{itemize}
+\item Most students primarily use smartphones
+\item Ensures critical workflows work on smallest screens
+\item Progressive enhancement for desktop experience
+\end{itemize}
+
+\subsubsection{Dashboard-Centric Design}
+
+\textbf{Decision:} Provide role-specific dashboards as landing pages.
+
+\textbf{Justification:}
+
+\begin{itemize}
+\item Reduces navigation overhead
+\item Presents important information immediately
+\item Supports situational awareness for wardens
+\end{itemize}
+
+% =====================================================
+% 4. SYSTEM DESIGN DIAGRAMS
+% =====================================================
+\newpage
+\section{System Design Diagrams}
+
+This section presents all UML diagrams modeling the system's structure and behavior.
+
+% ===== 4.1 Use Case Diagram =====
+\subsection{Use Case Diagram}
+
+The Use Case Diagram provides a high-level view of system functionality and actor interactions.
+
+\textbf{Key Actors:}
+
+\begin{itemize}
+\item \textbf{Student:} Marks attendance, submits entry/exit applications, requests room changes, submits complaints
+\item \textbf{Hostel Warden:} Approves requests, views reports, manages rooms, monitors operations
+\item \textbf{Assistant Warden:} view attendace, assists in room management
+\item \textbf{Security Personnel:} Verifies biometric entry/exit, logs day scholar access
+\item \textbf{Biometric System:} Automated attendance and gate entry/exit recording
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{use_case_diagram.png}
+    \caption{System Use Case Diagram}
+    \label{fig:usecase}
+\end{figure}
+
+
+% ===== 4.2 Data Flow Diagrams =====
+\newpage
+\subsection{Data Flow Diagrams}
+
+Data Flow Diagrams show how data moves through the system at multiple abstraction levels.
+
+\subsubsection{DFD Level 0 - Context Diagram}
+
+The Context Diagram shows SHMS as a single process with all external entities.
+
+\textbf{Major Data Flows:}
+
+\begin{itemize}
+\item Students $\leftrightarrow$ SHMS: Applications, queries, notifications, confirmations
+\item Warden $\leftrightarrow$ SHMS: Approvals, manual entries, reports, alerts
+\item Security $\leftrightarrow$ SHMS: Verifications, day scholar logs
+\item Biometric System $\rightarrow$ SHMS: Attendance data, entry/exit logs
+\item University DB $\rightarrow$ SHMS: Student profiles, enrollment data
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{DFD_Level_0.png}
+    \caption{DFD Level 0, Context Diagram}
+    \label{fig:dfd0}
+\end{figure}
+
+
+\subsubsection{DFD Level 1}
+
+Level 1 DFD decomposes the system into five major processes.
+
+\textbf{Major Processes:}
+
+\begin{itemize}
+\item 1.0 Manage Attendance
+\item 2.0 Manage Entry/Exit
+\item 3.0 Manage Rooms
+\item 4.0 Manage Complaints
+\item 5.0 Manage Day Scholars
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{DFD_Level_1.png}
+    \caption{DFD Level 1}
+    \label{fig:dfd1}
+\end{figure}
+
+
+\newpage
+\subsubsection{DFD Level 2 - Attendance Management}
+
+\textbf{Sub-Processes:}
+
+\begin{itemize}
+\item 1.1 Import Biometric Data
+\item 1.2 Validate Attendance
+\item 1.3 Generate Absentee List
+\item 1.4 Send Notifications
+\item 1.5 Process Leave Requests
+\item 1.6 Generate Reports
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{DFD_2_Attendance.png}
+    \caption{DFD Level 2 - Attendance Management}
+    \label{fig:dfd2-att}
+\end{figure}
+
+
+\subsubsection{DFD Level 2 - Entry/Exit Management}
+
+\textbf{Sub-Processes:}
+
+\begin{itemize}
+\item 2.1 Submit Application
+\item 2.2 Route for Approval
+\item 2.3 Process Approval
+\item 2.4 Verify at Gate
+\item 2.5 Record Exit/Entry
+\item 2.6 Monitor Return Time
+\item 2.7 Send Alerts
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{DFD2Entry.png}
+    \caption{DFD Level 2 - Entry/Exit Management}
+    \label{fig:dfd2-entryexit}
+\end{figure}
+
+
+\newpage
+\subsubsection{DFD Level 2 - Room Management}
+
+\textbf{Sub-Processes:}
+
+\begin{itemize}
+\item 3.1 Process Room Allocation
+\item 3.2 Handle Room Transfers
+\item 3.3 Process Clearance
+\item 3.4 Handle Maintenance Requests
+\item 3.5 Update Room Status
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{DFD_2_Room.png}
+    \caption{DFD Level 2 - Room Management}
+    \label{fig:dfd2-room}
+\end{figure}
+
+
+\newpage
+\subsubsection{DFD Level 2 - Day Scholar Tracking}
+
+\textbf{Sub-Processes:}
+
+\begin{itemize}
+\item 5.1 Log Entry
+\item 5.2 Verify Entry
+\item 5.3 Monitor Duration
+\item 5.4 Send Alerts
+\item 5.5 Log Exit
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{DFD2Day.png}
+    \caption{DFD Level 2 - Day Scholar Tracking}
+    \label{fig:dfd2-dayscholar}
+\end{figure}
+
+
+% ===== 4.3 Sequence Diagrams =====
+\newpage
+\subsection{Sequence Diagrams}
+
+Sequence diagrams model object interactions over time for key scenarios.
+
+\subsubsection{Attendance Marking via Biometric}
+
+\textbf{Main Flow}:
+\begin{enumerate}
+    \item Student scans fingerprint on biometric device
+    \item Biometric system sends data to Attendance Controller
+    \item Controller validates student ID and timestamp
+    \item Service saves attendance record to database
+    \item System returns confirmation
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{SequenceAttendance.png}
+    \caption{Sequence Diagram - Biometric Attendance Marking}
+    \label{fig:seq-attendance}
+\end{figure}
+
+
+\newpage
+\subsubsection{Entry/Exit Request and Approval}
+
+\textbf{Main Flow}:
+\begin{enumerate}
+    \item Student submits entry/exit application
+    \item System creates application and routes to Assistant Warden
+    \item Assistant Warden approves
+    \item System routes to Warden for final approval
+    \item Warden approves
+    \item System notifies student of approval
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{SequenceEntry.png}
+    \caption{Sequence Diagram - Entry/Exit Request and Approval}
+    \label{fig:seq-entryexit}
+\end{figure}
+\newpage
+
+\subsubsection{Gate Verification and Return Logging}
+
+\textbf{Main Flow}:
+\begin{enumerate}
+    \item Security enters application ID
+    \item System retrieves and displays application details
+    \item Student scans fingerprint for verification
+    \item Biometric system confirms identity
+    \item System records exit/entry time
+    \item Security receives confirmation
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{SequenceGate.png}
+    \caption{Sequence Diagram - Gate Verification and Return Logging}
+    \label{fig:seq-gate}
+\end{figure}
+
+
+\newpage
+\subsubsection{Room Allocation}
+
+\textbf{Main Flow}:
+\begin{enumerate}
+    \item Student submits group room allocation request
+    \item Controller validates group (capacity match, no duplicates)
+    \item Service checks available rooms
+    \item System displays matching rooms
+    \item Student selects preferred room
+    \item Service assigns room to all group members
+    \item System sends confirmations to all students
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{SequenceRoom.png}
+    \caption{Sequence Diagram - Room Allocation}
+    \label{fig:seq-room}
+\end{figure}
+
+
+\subsubsection{Day Scholar Entry and Exit}
+
+\textbf{Main Flow}:
+\begin{enumerate}
+    \item Day scholar arrives at hostel
+    \item Security logs entry with biometric
+    \item System records entry time and notifies warden
+    \item System monitors duration
+    \item Day scholar exits via biometric scan
+    \item System logs exit and calculates duration
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Sequence-diagram.png}
+    \caption{Sequence Diagram - Day Scholar Entry and Exit}
+    \label{fig:seq-dayscholar}
+\end{figure}
+
+
+% ===== 4.4 Activity Diagrams =====
+\newpage
+\subsection{Activity Diagrams}
+
+Activity diagrams illustrate workflow control and decision logic.
+
+\subsubsection{Attendance Workflow}
+
+\textbf{Swimlanes}: Student, Biometric System, SHMS, Warden
+
+\textbf{Main Steps}:
+\begin{enumerate}
+    \item Students mark attendance throughout evening (6 PM - 10 PM)
+    \item System imports biometric data hourly
+    \item At 10:00 PM, system checks all students
+    \item System generates absentee list (excludes approved leaves)
+    \item At 10:05 PM, system sends notification to warden
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{ActivityAttendance.png}
+    \caption{Activity Diagram - Attendance Workflow}
+    \label{fig:act-attendance}
+\end{figure}
+
+
+\newpage
+\subsubsection{Entry/Exit Workflow}
+
+\textbf{Swimlanes}: Student, System, Assistant Warden, Warden, Security
+
+\textbf{Main Steps}:
+\begin{enumerate}
+    \item Student submits application
+    \item System validates and routes to Assistant Warden
+    \item Assistant Warden reviews (approve/reject decision)
+    \item If approved, routes to Warden
+    \item Warden final review (approve/reject)
+    \item If both approved, student notified
+    \item Student goes to gate for biometric verification
+    \item Security verifies and system records exit
+    \item System monitors return and sends alert if overdue
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{ActivityEntry.png}
+    \caption{Activity Diagram - Entry/Exit Workflow}
+    \label{fig:act-entryexit}
+\end{figure}
+
+
+\subsubsection{Room Allocation or Transfer Workflow}
+
+\textbf{Swimlanes}: Students, System, Warden
+
+\textbf{Main Steps}:
+\begin{enumerate}
+    \item Students form group agreeing on room capacity
+    \item One student submits allocation form with all member details
+    \item System validates (capacity match, no duplicates)
+    \item System displays available rooms
+    \item Student selects room
+    \item System checks real-time availability
+    \item System assigns room to all members
+    \item System sends confirmations and updates occupancy
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{ActivityRoom.png}
+    \caption{Activity Diagram - Room Allocation or Transfer}
+    \label{fig:act-room}
+\end{figure}
+
+
+\newpage
+\subsubsection{Complaint Handling Workflow}
+
+\textbf{Swimlanes}: Student, System, Warden, Maintenance Staff
+
+\textbf{Main Steps}:
+\begin{enumerate}
+    \item Student submits complaint with category and photos
+    \item System assigns tracking number
+    \item System notifies warden immediately
+    \item Warden reviews and assigns to staff
+    \item Staff updates status as work progresses
+    \item Warden marks as resolved
+    \item System notifies student with resolution details
+    \item Student can provide feedback
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{ActivityComplaint.png}
+    \caption{Activity Diagram - Complaint Handling Workflow}
+    \label{fig:act-complaint}
+\end{figure}
+
+
+\subsubsection{Day Scholar Visit Workflow}
+
+\textbf{Swimlanes}: Day Scholar, Security, System, Warden
+
+\textbf{Main Steps}:
+\begin{enumerate}
+    \item Day scholar arrives at hostel
+    \item Security checks if pre-approved
+    \item If yes, scans biometric and allows entry
+    \item If no, security submits request
+    \item System may require warden approval for certain cases
+    \item If approved, generates time-limited pass
+    \item Day scholar scans biometric to enter
+    \item System logs entry and notifies warden
+    \item System monitors duration and alerts if exceeded
+    \item Day scholar exits via biometric
+    \item System records exit and calculates duration
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{ActivityDay.png}
+    \caption{Activity Diagram - Day Scholar Visit Workflow}
+    \label{fig:act-dayscholar}
+\end{figure}
+
+
+% ===== 4.5 Class Diagram =====
+\newpage
+\subsection{Class Diagram}
+
+The Class Diagram shows the system's static structure including classes, attributes, operations, and relationships.
+
+\textbf{Key Packages:}
+
+\begin{itemize}
+\item \textbf{User Package:} User (abstract), Student, Warden, AssistantWarden, SecurityPersonnel
+\item \textbf{Attendance Package:} AttendanceRecord, LeaveRequest, BiometricData
+\item \textbf{EntryExit Package:} EntryExitApplication, ApprovalRecord, GateVerification
+\item \textbf{Room Package:} Room, Bed, RoomAllocation, TransferRequest, MaintenanceRequest
+\item \textbf{Complaint Package:} Complaint, ComplaintCategory, ComplaintStatus
+\item \textbf{DayScholar Package:} DayScholarLog, VisitorPass
+\item \textbf{Notification Package:} Notification, EmailNotification, SMSNotification
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Class-Diagram.png}
+    \caption{System Class Diagram}
+    \label{fig:class}
+\end{figure}
+
+
+% ===== 4.6 Component Diagram =====
+\newpage
+\subsection{Component Diagram}
+
+The Component Diagram illustrates system architecture showing major components and dependencies.
+
+\textbf{Key Components:}
+
+\begin{itemize}
+\item \textbf{Presentation Layer:} Dashboard Component, Forms Component, Reports Component
+\item \textbf{Business Logic Layer:} Authentication Service, Attendance Service, EntryExit Service, Room Service, Complaint Service, DayScholar Service
+\item \textbf{Integration Layer:} Biometric Adapter, Email Service, SMS Service, University DB Adapter
+\item \textbf{Data Layer:} Data Access Component, MongoDB Database
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Component-Diagram.png}
+    \caption{System Component Diagram}
+    \label{fig:component}
+\end{figure}
+
+% =====================================================
+% 5. REQUIREMENTS-DESIGN TRACEABILITY
+% =====================================================
+\newpage
+\section{Requirements-Design Traceability}
+
+This section maps SRS requirements to specific design elements, ensuring complete coverage.
+
+\begin{longtable}{|p{2cm}|p{4cm}|p{4cm}|p{4cm}|}
+\hline
+\textbf{Requirement ID} & \textbf{SRS Requirement} & \textbf{Design Element} & \textbf{Diagram Reference} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Requirement ID} & \textbf{SRS Requirement} & \textbf{Design Element} & \textbf{Diagram Reference} \\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\endlastfoot
+FR-01 & Biometric Attendance Marking & Attendance Controller, Biometric Adapter & Fig. \ref{fig:seq-attendance}, \ref{fig:dfd2-att} \\
+\hline
+FR-02 & Hourly Data Import & BiometricData Import Service & Fig. \ref{fig:dfd2-att} \\
+\hline
+FR-03 & Daily Absentee List Generation & Attendance Report Generator & Fig. \ref{fig:act-attendance} \\
+\hline
+FR-04 & Warden Notification & Notification Service & Fig. \ref{fig:act-attendance} \\
+\hline
+FR-05 & Entry/Exit Application Submission & EntryExitApplication Form & Fig. \ref{fig:seq-entryexit}, \ref{fig:act-entryexit} \\
+\hline
+FR-06 & Dual-Level Approval Workflow & ApprovalRouting Service & Fig. \ref{fig:seq-entryexit}, \ref{fig:act-entryexit} \\
+\hline
+FR-07 & Gate Verification System & GateVerification Controller & Fig. \ref{fig:seq-gate} \\
+\hline
+FR-08 & Return Time Monitoring & ReturnMonitor Service & Fig. \ref{fig:act-entryexit} \\
+\hline
+FR-09 & Late Return Alerts & AlertService & Fig. \ref{fig:act-entryexit} \\
+\hline
+FR-10 & Room Allocation System & RoomAllocation Service & Fig. \ref{fig:seq-room}, \ref{fig:act-room} \\
+\hline
+FR-11 & Group-Based Allocation & GroupValidation Logic & Fig. \ref{fig:seq-room} \\
+\hline
+FR-12 & Vacancy Viewing & RoomRepository & Fig. \ref{fig:dfd2-room} \\
+\hline
+FR-13 & Room Transfer Requests & TransferRequest Form & Fig. \ref{fig:act-room} \\
+\hline
+FR-14 & Complaint Submission & Complaint Form & Fig. \ref{fig:act-complaint} \\
+\hline
+FR-15 & Photo Upload Support & FileUpload Component & Fig. \ref{fig:act-complaint} \\
+\hline
+FR-16 & Warden Notification & ComplaintNotification Service & Fig. \ref{fig:act-complaint} \\
+\hline
+FR-17 & Status Tracking & ComplaintStatus Tracker & Fig. \ref{fig:act-complaint} \\
+\hline
+FR-18 & Resolution Notification & ResolutionNotifier & Fig. \ref{fig:act-complaint} \\
+\hline
+FR-19 & Day Scholar Logging & DayScholarLog Service & Fig. \ref{fig:seq-dayscholar}, \ref{fig:act-dayscholar} \\
+\hline
+FR-20 & Biometric Verification & VisitorVerification Service & Fig. \ref{fig:seq-dayscholar} \\
+\hline
+FR-21 & Duration Monitoring & DurationMonitor & Fig. \ref{fig:act-dayscholar} \\
+\hline
+FR-22 & Duration Alerts & OverstayAlert Service & Fig. \ref{fig:act-dayscholar} \\
+\hline
+FR-23 & Reports Generation & ReportGenerator Service & Fig. \ref{fig:dfd2-att}, \ref{fig:dfd2-entryexit} \\
+\hline
+FR-24 & Email Notifications & EmailService & Fig. \ref{fig:class} \\
+\hline
+FR-25 & SMS Alerts & SMSService & Fig. \ref{fig:class} \\
+\hline
+NFR-01 & 3-Second Response Time & Performance Optimization & Architecture Decisions \\
+\hline
+NFR-02 & 100+ Concurrent Users & LoadBalancing, Caching & Component Diagram \\
+\hline
+NFR-03 & Mobile Responsive Design & Responsive CSS Framework & Figma Prototype \\
+\hline
+NFR-04 & 99.9\% Uptime & Redundant Architecture & Component Diagram \\
+\hline
+NFR-05 & Role-Based Security & JWT, RBAC Implementation & Architecture Decisions \\
+\hline
+NFR-06 & Data Backup & Automated Backup Service & Architecture Decisions \\
+\hline
+NFR-07 & Audit Logging & AuditLog Service & Class Diagram \\
+\hline
+\end{longtable}
+
+% =====================================================
+% 6. FIGMA PROTOTYPE AND VALIDATION
+% =====================================================
+\newpage
+\section{Figma Prototype and Validation}
+
+\subsection{Prototype Overview}
+
+An interactive prototype was developed in Figma covering all major system functionalities with realistic workflows and navigation.
+
+\textbf{Figma Prototype Link}: \url{https://www.figma.com/prototype/link-to-your-prototype}
+
+\subsection{Prototype Coverage}
+
+\subsubsection{Student Portal}
+
+\begin{itemize}
+\item Login and authentication
+\item Dashboard with attendance status
+\item Entry/exit application submission (complete flow)
+\item Room allocation request (group-based)
+\item Room transfer request
+\item Complaint submission with photo upload
+\item History viewing (attendance, applications, complaints)
+\end{itemize}
+
+\subsubsection{Warden Portal}
+
+\begin{itemize}
+\item Dashboard with key metrics and alerts
+\item Pending approvals (leave requests, entry/exit, room transfers)
+\item Attendance monitoring and absentee lists
+\item Room management (allocation, transfers, clearances)
+\item Complaint tracking and resolution
+\item Report generation
+\item Manual attendance entry
+\end{itemize}
+
+\subsubsection{Security Portal}
+
+\begin{itemize}
+\item Gate verification interface
+\item Day scholar entry logging
+\item Current entry/exit status dashboard
+\item Alert viewing
+\end{itemize}
+
+\newpage
+\subsection{Prototype Screenshots}
+
+\subsubsection{Login Screen}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{login.png}
+    \caption{Login Screen}
+\end{figure}
+
+\subsubsection{Student Dashboard}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{dashboard.png}
+    \caption{Student Dashboard}
+\end{figure}
+
+\subsubsection{Entry/Exit Application Form}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{entry.png}
+    \caption{Entry/Exit Application Form}
+\end{figure}
+
+\subsubsection{Warden Dashboard}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{warden.png}
+    \caption{Warden Dashboard}
+\end{figure}
+
+\subsubsection{Warden Assistant}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{assistant.png}
+    \caption{Warden Assistant Dashboard}
+\end{figure}
+
+\subsubsection{Admin Dashboard}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{admin.png}
+    \caption{Admin Dashboard}
+\end{figure}
+
+\subsubsection{Security Personnel}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{security.png}
+    \caption{Security Personnel Dashboard}
+\end{figure}
+
+\subsection{Design Specifications}
+
+\textbf{Color Scheme:}
+
+\begin{itemize}
+\item Primary: Navy Blue \#1E3A8A
+\item Secondary: Teal \#14B8A6
+\item Success: Green \#10B981
+\item Warning: Amber \#F59E0B
+\item Danger: Red \#EF4444
+\item Background: Light Gray \#F9FAFB
+\item Text Primary: Dark Gray \#111827
+\item Text Secondary: Medium Gray \#6B7280
+\end{itemize}
+
+\textbf{Typography:}
+
+\begin{itemize}
+\item Primary Font: Inter
+\item Heading Sizes: H1 (28px), H2 (24px), H3 (20px), H4 (18px)
+\item Body Text: 16px
+\item Small Text: 14px
+\item Mobile Adjustments: Reduce all sizes by 2px
+\end{itemize}
+
+\textbf{Responsive Breakpoints:}
+
+\begin{itemize}
+\item Mobile: 320px - 767px
+\item Tablet: 768px - 1023px
+\item Desktop: 1024px and above
+\end{itemize}
+
+\newpage
+% =====================================================
+% 7. MEETING DOCUMENTATION (MILESTONE 3)
+% =====================================================
+\section{Meeting Documentation (Milestone 3)}
+
+\subsection{Meeting 1: Paper-Based Prototype Validation}
+
+\begin{itemize}
+\item \textbf{Date}: January 08, 2024  
+\item \textbf{Time}: 3:00 PM -- 4:00 PM  
+\item \textbf{Location}: Namal University, Mianwali  
+\end{itemize}
+
+\textbf{Attendees:}
+\begin{itemize}
+\item Ms. Nida Sultan Nahra --- Requirement Provider (Hostel Warden)
+\item Muhammad Ahmad --- Team Lead
+\item Asad Ullah Khan --- Team Member
+\item Maryam Rashid --- Team Member
+\end{itemize}
+
+\textbf{Meeting Objective:}  
+The objective of this meeting was to present and validate the paper-based prototype of the Smart Hostel Management System (SHMS) with the Requirement Provider, ensuring alignment with the approved SRS before proceeding to detailed system design and interactive prototyping.
+
+\subsubsection{Prototype Demonstration}
+The project team presented hand-drawn paper-based screens representing the main system interfaces derived directly from the SRS. The prototype included:
+
+\begin{itemize}
+\item Student dashboard (attendance status, entry/exit requests, complaints)
+\item Hostel warden dashboard (attendance overview, approvals, alerts)
+\item Entry/exit request form with approval workflow
+\item Room allocation and vacancy overview screens
+\item Complaint submission and tracking interface
+\end{itemize}
+
+Each screen was explained by the team, highlighting how it maps to specific functional requirements defined in the SRS.
+
+\subsubsection{Discussion Summary}
+\begin{itemize}
+\item The team explained how the attendance workflow integrates biometric data and manual overrides.
+\item Entry/exit request flow was discussed in detail, including restricted time approvals.
+\item Room management logic, including group-wise allocation and vacancy viewing, was clarified.
+\item Complaint management and notification flow was explained.
+\item The Requirement Provider verified that all presented screens reflected real hostel operations.
+\end{itemize}
+
+\subsubsection{Feedback and Observations}
+\begin{itemize}
+\item Overall structure of the system interfaces was found consistent with hostel procedures.
+\item The paper-based prototype clearly represented all major system functionalities.
+\item The Requirement Provider emphasized clarity in approval status visibility for students.
+\end{itemize}
+
+\textbf{Outcome:}  
+The paper-based prototype was approved as a correct representation of system requirements. The project team was advised to proceed with creating a complete interactive prototype in Figma based on this structure.
+
+\subsection{Meeting 2: Interactive Prototype Review and Design Validation}
+
+\begin{itemize}
+\item \textbf{Date}: January 16, 2024   
+\item \textbf{Time}: 1:30 PM -- 02:00 PM  
+\item \textbf{Location}: Online (Google Meet)
+\end{itemize}
+
+\textbf{Attendees:}
+\begin{itemize}
+\item Ms. Nida Sultan Nahra --- Requirement Provider (Hostel Warden)
+\item Muhammad Ahmad --- Team Lead
+\item Asad Ullah Khan --- Team Member
+\item Maryam Rashid --- Team Member
+\end{itemize}
+
+\subsubsection{Meeting Agenda}
+\begin{enumerate}
+\item Presentation of complete system design artifacts
+\item Demonstration of Figma interactive prototype
+\item Walkthrough of major user flows
+\item Validation of usability and design consistency
+\item Collection of final feedback
+\item Design approval confirmation
+\end{enumerate}
+
+\subsubsection{Prototype Demonstration}
+The project team presented a complete interactive Figma prototype covering all major system functionalities defined in the SRS and required by Milestone 3. The demonstration included:
+
+\begin{itemize}
+\item Role-based dashboards for students, wardens, and security staff
+\item Attendance marking and reporting interfaces
+\item Entry/exit request submission, approval, and tracking workflow
+\item Room allocation, vacancy viewing, and transfer request screens
+\item Complaint submission, status tracking, and resolution views
+\item Day scholar entry/exit monitoring interface
+\end{itemize}
+
+Navigation flow, screen transitions, and interactive elements were demonstrated live.
+
+\subsubsection{Discussion Summary}
+\begin{itemize}
+\item The Requirement Provider confirmed understanding of the system workflows.
+\item Entry/exit approval logic and late return alerts were discussed in detail.
+\item Attendance dashboard statistics and daily notification timing were reviewed.
+\item Room allocation constraints and group registration logic were validated.
+\end{itemize}
+
+\subsubsection{Key Feedback}
+\textbf{Positive Feedback:}
+\begin{itemize}
+\item The interface design was clear, simple, and easy to understand.
+\item Mobile-friendly layout was appreciated due to high student mobile usage.
+\item Approval workflows were well visualized and easy to track.
+\item Dashboard summaries provided useful operational insights.
+\end{itemize}
+
+\textbf{Suggestions and Improvements:}
+\begin{itemize}
+\item Add quick attendance percentage widget on the student dashboard.
+\item Show notification badges for pending approvals on warden dashboard.
+\item Include emergency contact field in entry/exit request form.
+\item Add date-range filters in attendance and complaint reports.
+\item Use color indicators for overdue requests and unresolved complaints.
+\end{itemize}
+
+\subsubsection{Final Approval}
+The Requirement Provider expressed strong appreciation and satisfaction with the complete system design and interactive prototype presented by the project team. She stated that the proposed system accurately reflects real hostel operations and addresses long-standing administrative and security challenges.
+
+The Requirement Provider further shared that if this system is successfully implemented in the future, it would significantly improve hostel management efficiency, transparency, and student safety. She particularly appreciated the clarity of workflows, role-based dashboards, and the overall usability of the system.
+
+Although the system is currently a prototype and not yet implemented, the Requirement Provider conveyed high confidence in its practical value and expressed enthusiasm about its potential real-world adoption. The design was validated as fully compliant with the approved SRS and Milestone 3 objectives, with only minor suggestions recommended for future implementation.
+
+\textbf{Conclusion:}  
+Both meetings were conducted by the project team to validate system design and prototypes. All feedback was documented, and the final design reflects stakeholder input and confirmed requirements.
+
+% =====================================================
+% 8. CONCLUSION
+% =====================================================
+\newpage
+\section{Conclusion}
+
+\subsection{Design Completeness}
+
+This Design Specification presents a comprehensive system design for the Smart Hostel Management System that fully addresses all requirements specified in the approved SRS document. The design includes:
+
+\begin{itemize}
+\item Complete UML Model: Use case, DFD, sequence, activity, class, and component diagrams
+\item Full Traceability: Every functional requirement mapped to specific design artifacts
+\item Validated Design: Stakeholder feedback incorporated through interactive prototype
+\item Implementation-Ready: Sufficient detail for development team to begin implementation
+\end{itemize}
+
+\subsection{Stakeholder Validation}
+
+The design has been validated through formal meeting with the Requirement Provider. The interactive Figma prototype received approval, confirming design completeness and suitability for implementation.
+
+\subsection{Next Steps}
+
+Following approval of this design, the project will proceed to:
+
+\begin{enumerate}
+\item \textbf{Future Implementation:}
+\begin{itemize}
+\item Set up development environment with Node.js, React.js, and MongoDB
+\item Implement database schema based on class diagram
+\item Develop RESTful APIs following component design specifications
+\item Build frontend interfaces based on approved Figma prototype
+\item Integrate biometric device APIs for attendance and gate verification
+\item Implement JWT-based authentication and role-based access control
+\item Develop notification services for email and SMS alerts
+\end{itemize}
+
+\item \textbf{Testing and Quality Assurance:}
+\begin{itemize}
+\item Unit testing of individual components and services
+\item Integration testing of module interactions
+\item API testing using Postman or similar tools
+\item User acceptance testing with hostel staff and sample student group
+\item Performance testing against specified requirements
+\item Security testing for authentication and authorization
+\item Cross-browser and responsive design testing
+\end{itemize}
+
+\item \textbf{Deployment and Training:}
+\begin{itemize}
+\item Production environment setup on university server or cloud platform
+\item Data migration from existing spreadsheets and systems
+\item User training sessions for warden, assistant warden, and security personnel
+\item Student orientation for system usage
+\item Phased rollout starting with attendance module
+\item Monitoring and support during initial weeks of operation
+\end{itemize}
+\end{enumerate}
+
+\subsection{Acknowledgments}
+
+We extend our sincere gratitude to:
+
+\begin{itemize}
+\item \textbf{Ms. Nida Sultan Nahra}, Hostel Warden, for her guidance, detailed feedback, and commitment to improving hostel operations
+\item Our \textbf{course instructor}, for teaching software engineering principles and providing feedback on our design
+\item \textbf{Namal University}, for providing the opportunity to work on a real-world problem
+\end{itemize}
+
+% =====================================================
+% APPENDICES
+% =====================================================
+\newpage
+\appendix
+
+\section{Glossary}
+
+\begin{description}
+    \item[API] Application Programming Interface, used for Inter-component communication
+    \item[Biometric System] Fingerprint identification system used at hostel and main gate
+    \item[DFD] Data Flow Diagram - shows how data moves through system processes
+    \item[RBAC] Role-Based Access Control - security model restricting access based on user roles
+    \item[REST] Representational State Transfer - architectural style for web services
+    \item[SHMS] Smart Hostel Management System
+    \item[SRS] Software Requirements Specification
+    \item[UML] Unified Modeling Language - standard notation for software diagrams
+\end{description}
+
+\section{References}
+
+\begin{enumerate}
+    \item Software Requirements Specification (SRS) - Smart Hostel Management System, December 2023
+    \item IEEE Standard 830-1998: Recommended Practice for Software Requirements Specifications
+    \item UML 2.0 Specification, Object Management Group
+\end{enumerate}
+
+\section{Design Tools Used}
+
+\begin{itemize}
+\item \textbf{Diagrams:} draw.io and visual paradigm for creating use case, DFD, sequence, activity, class, and component diagrams
+\item \textbf{Prototyping:} Figma for interactive UI/UX design and mockups
+\item \textbf{Documentation:} LaTeX for professional document preparation
+\item \textbf{Version Control:} Git and GitHub for source code and document management
+\item \textbf{Collaboration:} Google Drive for file sharing and Google Sheets for meeting minutes
+\item \textbf{Communication:} WhatsApp for team coordination and quick discussions
+\item \textbf{Project Management:} Trello for task tracking and milestone planning
+\end{itemize}
+
+\section{GitHub Repository Link}
+
+\textbf{Repository URL:} \url{https://github.com/Muhammad-Ahmad-99/Smart-Hostel-Management-System.git}
+
+\section{Revision History}
+
+\begin{longtable}{|c|c|c|p{8cm}|}
+\hline
+\textbf{Version} & \textbf{Date} & \textbf{Author} & \textbf{Description} \\
+\hline
+1.0 & January 20, 2024 & Muhammad Ahmad & Initial complete version with all diagrams and sections \\
+\hline
+1.1 & January 20, 2024 & Asad Ullah Khan & Fixed image paths and formatting issues \\
+\hline
+1.2 & January 20, 2024 & Maryam Rashid & Added traceability matrix and meeting documentation \\
+\hline
+\end{longtable}
+
+\end{document}
