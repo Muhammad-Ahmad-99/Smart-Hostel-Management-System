@@ -3,6 +3,7 @@
 # 🏡 Smart Hostel Management System
 
 **Department of Computer Science (Namal University, Mianwali)**
+
 *Course: Database Systems (CSC-271) | Semester Project*
 
 * Google Sheet Link: [https://docs.google.com/spreadsheets/d/19YDsyAdm93ZzYEPhOQ8Ynl13ZxgnjzLOFdT513q0DzY/edit?usp=sharing](https://docs.google.com/spreadsheets/d/19YDsyAdm93ZzYEPhOQ8Ynl13ZxgnjzLOFdT513q0DzY/edit?usp=sharing)
