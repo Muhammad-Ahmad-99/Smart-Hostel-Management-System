@@ -122,11 +122,11 @@ This sets the correct bcrypt password hashes for all seed users. Without this st
 
 | Role | Email | Password |
 |------|-------|----------|
-| Admin | admin@namal.edu.pk | admin#1219@ |
-| Warden | nida.sultan@namal.edu.pk | nidanida12 |
-| Security Gate | *(PIN on login page)* | 654321 |
+| Admin | admin@namal.edu.pk | admin#1219@00 |
+| Warden | nida.sultan@namal.edu.pk | nidanida1200 |
+| Security Gate | *(PIN on login page)* | 65432100 |
 | Students (real) | their university email | namal123 |
-| Demo students | bscs24f01@namal.edu.pk | 12121212 |
+
 
 ### Android / ZeroTier Access
 
