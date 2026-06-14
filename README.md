@@ -127,15 +127,6 @@ This sets the correct bcrypt password hashes for all seed users. Without this st
 | Security Gate | *(PIN on login page)* | 65432100 |
 | Students (real) | their university email | namal123 |
 
-
-### Android / ZeroTier Access
-
-Since ZeroTier is installed on both the laptop and your Android device:
-
-1. Find your ZeroTier IP (shown in the ZeroTier app, e.g. `10.x.x.x`)
-2. Make sure both devices are on the same ZeroTier network
-3. Open Chrome on Android and visit: `http://10.x.x.x:5000`
-
 ### Key Features by Role
 
 **Student**
